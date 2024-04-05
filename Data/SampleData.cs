@@ -4,7 +4,14 @@ namespace Plantify_Project_The_Webshop.Data
 {
     public class SampleData
     {
+
         public static void Create(AppDbContext database)
+        {
+            CreateAccount(database);
+            CreateProduct(database);
+        }
+
+        public static void CreateProduct(AppDbContext database)
         {
 
             if (!database.Products.Any()) //Kontrollera om datan redan finns i databasen, om den inte gör det, lägg till. 
@@ -215,11 +222,31 @@ namespace Plantify_Project_The_Webshop.Data
                         Price = 30,
                         Category = "Tools/Accessories",
                         Description = "Stylish stand for displaying potted plants."
-                    }
-                );
+                    });
+            }
 
+            database.SaveChanges();
+        }
+
+        public static void CreateAccount(AppDbContext database)
+        {
+            // If there are no fake accounts, add some.
+            string fakeIssuer = "https://example.com";
+            if (!database.Accounts.Any(a => a.OpenIDIssuer == fakeIssuer))
+            {
+                var account = new Account
+                {
+                    OpenIDIssuer = fakeIssuer,
+                    OpenIDSubject = "1111111111",
+                    Name = "Test Testsson",
+                    Email = "test.testsson@example.com",
+                    Phone = "0738391854"
+                };
+
+                database.Accounts.Add(account);
                 database.SaveChanges();
             }
         }
+
     }
 }

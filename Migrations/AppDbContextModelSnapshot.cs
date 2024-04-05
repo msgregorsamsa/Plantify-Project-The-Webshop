@@ -30,7 +30,6 @@ namespace Plantify_Project_The_Webshop.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -46,12 +45,37 @@ namespace Plantify_Project_The_Webshop.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
                     b.ToTable("Accounts");
+                });
+
+            modelBuilder.Entity("Plantify_Project_The_Webshop.Models.Cart", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("AccountID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccountID");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Cart");
                 });
 
             modelBuilder.Entity("Plantify_Project_The_Webshop.Models.Product", b =>
@@ -71,7 +95,6 @@ namespace Plantify_Project_The_Webshop.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImagePath")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -84,6 +107,35 @@ namespace Plantify_Project_The_Webshop.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("Plantify_Project_The_Webshop.Models.Cart", b =>
+                {
+                    b.HasOne("Plantify_Project_The_Webshop.Models.Account", "Accounts")
+                        .WithMany("Carts")
+                        .HasForeignKey("AccountID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Plantify_Project_The_Webshop.Models.Product", "Products")
+                        .WithMany("Carts")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Accounts");
+
+                    b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("Plantify_Project_The_Webshop.Models.Account", b =>
+                {
+                    b.Navigation("Carts");
+                });
+
+            modelBuilder.Entity("Plantify_Project_The_Webshop.Models.Product", b =>
+                {
+                    b.Navigation("Carts");
                 });
 #pragma warning restore 612, 618
         }

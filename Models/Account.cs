@@ -6,9 +6,9 @@
         public string OpenIDIssuer { get; set; }
         public string OpenIDSubject { get; set; }
         public string Name { get; set; }
-        public string Email { get; set; }
-        public string Phone { get; set; }
+        public string? Email { get; set; }
+        public string? Phone { get; set; }
+        public virtual List<Cart> Carts { get; set; }
 
-        //Skapa ett cart-objekt här?
     }
 }

@@ -6,3 +6,22 @@
 }
 
 <h1>Welcome, @accessControl.LoggedInAccountName!</h1>
+
+@* @if (Model.Product.ImagePath != null)
+{
+    <img src="images/@Model.Product.ImagePath" style="width: 200px" />
+} *@
+
+<form method="post">
+    <input type="text" name="itemText" placeholder="Search for something..." />
+    <button type="submit">Add Item</button>
+</form>
+
+@* <ul>
+    @foreach (var item in Model.Account.Products)
+    {
+        <li>@item.Name</li> //En lista av produkter
+    }
+</ul> *@
+
+<form method="post"> </form>
