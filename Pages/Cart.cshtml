@@ -1,0 +1,48 @@
+﻿@page
+@model Plantify_Project_The_Webshop.Pages.CartModel
+@{
+    ViewData["Title"] = "Shopping Cart";
+}
+
+<h1>Shopping Cart</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+            public List<Product> Cart { get; set; }
+
+        @foreach (var item in Model.Cart)
+        {
+            <tr>
+                <td><img src="@item.ImagePath" alt="@item.Name" /></td>
+                <td>@item.Name</td>
+                <td>@item.Price</td>
+@*                 <td>@item.Quantity</td>
+                <td>@item.TotalPrice</td> *@
+                <td>
+                    <form method="post">
+                        <button type="submit">Remove</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="cart-total">
+    <p>Total: @Model.TotalPrice</p>
+    <form method="post">
+        <button type="submit">Clear Cart</button>
+        <button type="submit">Proceed to Checkout</button>
+    </form>
+</div>

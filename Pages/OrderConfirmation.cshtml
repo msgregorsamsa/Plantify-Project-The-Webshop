@@ -1,0 +1,14 @@
+﻿@page
+@model Plantify_Project_The_Webshop.Pages.OrderConfirmationModel
+@{
+    ViewData["Title"] = "Order Confirmation";
+}
+
+<h1>Order Confirmation</h1>
+
+<p>Thank you for your order!</p>
+<p>Total: @Model.TotalPrice</p>
+
+<form method="get">
+    <button type="submit">Return to start</button>
+</form>
