@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore.Storage;
+using Plantify_Project_The_Webshop.Data;
 using Plantify_Project_The_Webshop.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,12 +9,16 @@ namespace Plantify_Project_The_Webshop.Pages
 {
     public class CartModel : PageModel
     {
+        //Konstruktorer
         public List<Cart> Cart { get; set; }  // Definierar Cart-egenskapen
+        public Product Product { get; set; }
 
+        //Variabler
         public int CountItems { get; set; }
         public double TotalPrice { get; set; }
         public string emptyCart { get; set; }
 
+        //Metoder
         public void GetCartItems()
         {
             if (Cart == null || !Cart.Any())
@@ -22,7 +28,7 @@ namespace Plantify_Project_The_Webshop.Pages
 
             else
             {
-
+                // lägg till kod för att visa om saker finns i ens cart
             }
         }
 
@@ -38,25 +44,12 @@ namespace Plantify_Project_The_Webshop.Pages
         }
 
 
-
         public void OnGet(List<Cart> carts) //Anropa ovan metoder för att samla och presentera innehållet i varukorgen
         {
             Cart = carts; // Tilldela värden till Cart-egenskapen
             GetCartItems();
             CalculateTotalPrice();
             CountCartItems();
-        }
-
-        public void OnPost() //Add to cart
-        {
-             
-            int productId = int.Parse(Request.Form["productId"]);
-
-/*            List<Product> ListOfItems = new List<Product>();
-            Product = GetProductById(id);
-            ListOfItems.Add(Product);*/
-
-            return null;
         }
     }
 }

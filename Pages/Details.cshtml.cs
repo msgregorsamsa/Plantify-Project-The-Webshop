@@ -10,6 +10,7 @@ namespace Plantify_Project_The_Webshop.Pages
     {
         private readonly AppDbContext database;
         public Product Product { get; set; }
+        public List<Cart> Cart { get; set; }
 
         public DetailsModel(AppDbContext database)
         {
@@ -21,9 +22,30 @@ namespace Plantify_Project_The_Webshop.Pages
             return Product = database.Products.First(p => p.ID == id);
         }
 
-        public void OnGet(int id) // Hämtar "details" för en specifik produkt baserat på ID. 
-        { 
+        public void OnGet(int id) // Hämtar detaljer för en specifik produkt baserat på ID. 
+        {
             Product = GetProductById(id);
+        }
+
+
+
+        public IActionResult OnPostAddToCart(int id)
+        {
+            var productToAdd = GetProductById(id);
+
+            if (productToAdd != null)
+            {
+                var newCartItem = new Cart { Products = productToAdd };
+
+                Cart.Add(newCartItem);
+
+                return RedirectToPage("/Cart");
+            }
+            else
+            {
+                return NotFound();
+            }
+         
         }
 
     }

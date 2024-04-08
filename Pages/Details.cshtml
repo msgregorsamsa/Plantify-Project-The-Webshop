@@ -11,8 +11,10 @@
     <p>Category: @Model.Product.Category</p>
     <p>Description: @Model.Product.Description</p>
 
-    <form asp-page-handler="AddToCart" method="post">
-        <button type="submit" > Add To Cart</button>
+
+    <form method="post">
+        <input type="hidden" name="id" value="@Model.Product.ID" />
+        <button type="submit">Add To Cart</button>
     </form>
 
     <form asp-page="/Index" method="get">
