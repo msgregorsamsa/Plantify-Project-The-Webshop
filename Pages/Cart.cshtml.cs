@@ -19,25 +19,44 @@ namespace Plantify_Project_The_Webshop.Pages
             {
                 emptyCart = "Your cart is empty!";
             }
+
+            else
+            {
+
+            }
         }
 
-        public double CalculateTotalPrice()
+        public void CountCartItems() //Räkna antalet produkter i varukorgen
+        {
+            CountItems = Cart.Sum(cart => cart.Quantity);
+        }
+
+        public double CalculateTotalPrice() //Räkna ut totala priset av produkterna i varukorgen
         {
             TotalPrice = Cart.Sum(cart => cart.Products.Price * cart.Quantity);
             return TotalPrice;
         }
 
-        public void CountCartItems()
-        {
-            CountItems = Cart.Sum(cart => cart.Quantity);
-        }
 
-        public void OnGet(List<Cart> carts)
+
+        public void OnGet(List<Cart> carts) //Anropa ovan metoder för att samla och presentera innehållet i varukorgen
         {
             Cart = carts; // Tilldela värden till Cart-egenskapen
             GetCartItems();
             CalculateTotalPrice();
             CountCartItems();
+        }
+
+        public void OnPost() //Add to cart
+        {
+             
+            int productId = int.Parse(Request.Form["productId"]);
+
+/*            List<Product> ListOfItems = new List<Product>();
+            Product = GetProductById(id);
+            ListOfItems.Add(Product);*/
+
+            return null;
         }
     }
 }

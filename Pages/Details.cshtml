@@ -10,9 +10,11 @@
     <p>Price: @Model.Product.Price SEK</p>
     <p>Category: @Model.Product.Category</p>
     <p>Description: @Model.Product.Description</p>
-    <form method="post">
-        <button type="submit">Add to Cart</button>
+
+    <form asp-page-handler="AddToCart" method="post">
+        <button type="submit" > Add To Cart</button>
     </form>
+
     <form asp-page="/Index" method="get">
         <button type="submit">Return to Start</button>
     </form>
