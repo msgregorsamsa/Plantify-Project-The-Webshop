@@ -24,12 +24,13 @@
     @foreach (var product in Model.Products)
     {
         <div class="product">
-            <a href="@product.ID">
-                <img src="@product.ImagePath" alt="@product.Name" />
-                <h2>@product.Name</h2>
-                <p>@product.Price</p>
-                <p>@product.Description</p>
-            </a>
+        <a asp-page="Details" asp-route-id="@product.ID">
+            <img src="@product.ImagePath" alt="@product.Name" />
+            <h2>@product.Name</h2>
+            <p>@product.Price</p>
+            <p>@product.Description</p>
+            @* Eventuellt lägga till en knapp här (click for more details) för visibility *@
+        </a>
         </div>
     }
 </div>
