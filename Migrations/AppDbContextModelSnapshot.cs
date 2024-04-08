@@ -49,7 +49,7 @@ namespace Plantify_Project_The_Webshop.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Accounts");
+                    b.ToTable("Accounts", (string)null);
                 });
 
             modelBuilder.Entity("Plantify_Project_The_Webshop.Models.Cart", b =>
@@ -75,7 +75,7 @@ namespace Plantify_Project_The_Webshop.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Carts");
+                    b.ToTable("Carts", (string)null);
                 });
 
             modelBuilder.Entity("Plantify_Project_The_Webshop.Models.Product", b =>
@@ -106,7 +106,7 @@ namespace Plantify_Project_The_Webshop.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("Plantify_Project_The_Webshop.Models.Cart", b =>

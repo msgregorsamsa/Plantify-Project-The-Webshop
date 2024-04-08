@@ -19,23 +19,27 @@
     </thead>
     <tbody>
 
-            public List<Product> Cart { get; set; }
+            @if (Model.Cart == null || !Model.Cart.Any()) 
+            {
+                <p id="emptyCart">@Model.emptyCart</p>
+            }
+            else
+            {
+                @foreach (var cartItem in Model.Cart)
+                {
+                    <tr>
+                        <td><img src="@cartItem.Products.ImagePath" alt="@cartItem.Products.Name" /></td>
+                        <td>@cartItem.Products.Name</td>
+                        <td>@cartItem.Products.Price</td>
+                        <td>
+                            <form method="post">
+                                <button type="submit">Remove</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
 
-        @foreach (var item in Model.Cart)
-        {
-            <tr>
-                <td><img src="@item.ImagePath" alt="@item.Name" /></td>
-                <td>@item.Name</td>
-                <td>@item.Price</td>
-@*                 <td>@item.Quantity</td>
-                <td>@item.TotalPrice</td> *@
-                <td>
-                    <form method="post">
-                        <button type="submit">Remove</button>
-                    </form>
-                </td>
-            </tr>
-        }
     </tbody>
 </table>
 
