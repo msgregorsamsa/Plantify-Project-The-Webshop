@@ -7,6 +7,8 @@
 
 <h1>Welcome, @accessControl.LoggedInAccountName!</h1>
 
+<a href="/cart">View Cart</a>
+
 <form method="get">
     <input type="text" name="searchText" placeholder="Search for a product by name..." />
     <select name="category">
@@ -22,11 +24,11 @@
     @foreach (var product in Model.Products)
     {
         <div class="product">
-            <a href="/Product/Details/@product.ID">
+            <a href="@product.ID">
                 <img src="@product.ImagePath" alt="@product.Name" />
-                <h2>Product: @product.Name</h2>
-                <p>Price: @product.Price</p>
-                <p>Description: @product.Description</p>
+                <h2>@product.Name</h2>
+                <p>@product.Price</p>
+                <p>@product.Description</p>
             </a>
         </div>
     }
