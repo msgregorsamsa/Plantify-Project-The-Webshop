@@ -25,7 +25,7 @@
     {
         <div class="product">
         <a asp-page="Details" asp-route-id="@product.ID">
-            <img src="@product.ImagePath" alt="@product.Name" />
+            <img src="Images/@product.ImagePath" alt="@product.Name" style="width: 200px" />
             <h2>@product.Name</h2>
             <p>@product.Price</p>
             <p>@product.Description</p>
@@ -33,6 +33,7 @@
         </a>
         </div>
     }
+
 </div>
 
 @if (Model.Products.Count == 0)

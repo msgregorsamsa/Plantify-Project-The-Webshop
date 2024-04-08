@@ -7,9 +7,9 @@
 <div class="product-details">
     <img src="@Model.Product.ImagePath" alt="@Model.Product.Name" />
     <h1>@Model.Product.Name</h1>
-    <p>@Model.Product.Price</p>
-    <p>@Model.Product.Category</p>
-    <p>@Model.Product.Description</p>
+    <p>Price: @Model.Product.Price SEK</p>
+    <p>Category: @Model.Product.Category</p>
+    <p>Description: @Model.Product.Description</p>
     <form method="post">
         <button type="submit">Add to Cart</button>
     </form>
