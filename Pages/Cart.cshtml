@@ -7,7 +7,7 @@
 <h1>Your Cart</h1>
 
 <table>
-	<thead>
+	@* <thead>
 		<tr>
 			<th>Image</th>
 			<th>Name</th>
@@ -16,34 +16,62 @@
 			<th>Total</th>
 			<th></th>
 		</tr>
-	</thead>
+	</thead> *@
 	<tbody>
 
 		<div class="shoppingCart">
-
-			@if (Model.Carts == null || !Model.Carts.Any())
+			@if (Model.Carts.Any())
 			{
-				<p id="emptyCart">@Model.emptyCart</p>
+				@foreach (var cartItemGroup in Model.Carts.GroupBy(c => c.ProductId))
+				{
+				<tr>
+					<td><img src="Images/@cartItemGroup.First().Products.ImagePath" alt="@cartItemGroup.First().Products.Name" /></td>
+					<td>@cartItemGroup.First().Products.Name</td>
+					<td>Price: @cartItemGroup.First().Products.Price SEK</td>
+						@if (cartItemGroup.Count() > 1)
+						{
+						<td>Quantity: @cartItemGroup.Sum(c => c.Quantity)</td>
+						}
+						else
+						{
+						<td>Quantity: @cartItemGroup.First().Quantity</td>
+						}
+				</tr>
+				}
 			}
-
 			else
 			{
+			<p id="emptyCart">@Model.emptyCart</p>
+			}
+		</div>
 
-				@foreach (var cartItem in Model.Carts)
+
+
+
+@* 		<div class="shoppingCart">
+
+
+			@if (Model.Carts.Any()) 
+			{
+			@foreach (var cartItem in Model.Carts)
 				{
 				<tr>
 					<td><img src="Images/@cartItem.Products.ImagePath" alt="@cartItem.Products.Name" /></td>
 					<td>@cartItem.Products.Name</td>
-					<td>@cartItem.Products.Price</td>
-					<td>@cartItem.Quantity</td> <!-- Använd kvantitet här om det behövs -->
-					<td>@(cartItem.Products.Price * cartItem.Quantity)</td> <!-- Beräkna totalpriset för varje objekt i varukorgen -->
+					<td>Price: @cartItem.Products.Price SEK</td>
+					<td>Quantity: @cartItem.Quantity</td> 
+					<td>Total: @(cartItem.Products.Price * cartItem.Quantity)</td> <!-- Beräkna totalpriset för varje objekt i varukorgen -->
 					<td>
 				</tr>
 				}
-
 			}
 
-		</div>
+			else 
+			{
+				<p id="emptyCart">@Model.emptyCart</p>
+			}
+
+		</div> *@
 
 	</tbody>
 

@@ -43,7 +43,7 @@ namespace Plantify_Project_The_Webshop.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Cart",
+                name: "Carts",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -54,15 +54,15 @@ namespace Plantify_Project_The_Webshop.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Cart", x => x.Id);
+                    table.PrimaryKey("PK_Carts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Cart_Accounts_AccountID",
+                        name: "FK_Carts_Accounts_AccountID",
                         column: x => x.AccountID,
                         principalTable: "Accounts",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Cart_Products_ProductId",
+                        name: "FK_Carts_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "ID",
@@ -70,20 +70,20 @@ namespace Plantify_Project_The_Webshop.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cart_AccountID",
-                table: "Cart",
+                name: "IX_Carts_AccountID",
+                table: "Carts",
                 column: "AccountID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cart_ProductId",
-                table: "Cart",
+                name: "IX_Carts_ProductId",
+                table: "Carts",
                 column: "ProductId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Cart");
+                name: "Carts");
 
             migrationBuilder.DropTable(
                 name: "Accounts");

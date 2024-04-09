@@ -69,7 +69,7 @@ namespace Plantify_Project_The_Webshop.Pages
 		{
 			Carts = GetCartItems();
 
-			// Kontrollera om varukorgen inte är tom innan du utför beräkningar
+			//Kontrollerar om varukorgen är tom innan den genomför några beräkningar
 			if (Carts != null && Carts.Any())
 			{
 				CalculateTotalPrice();
