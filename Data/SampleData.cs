@@ -31,7 +31,7 @@ namespace Plantify_Project_The_Webshop.Data
                     {
                         Name = "Snake Plant",
                         ImagePath = "snake_plant.jpg",
-                        Price = 25,
+                        Price = 150,
                         Category = "Houseplants",
                         Description = "Hardy indoor plant known for its vertical, variegated leaves."
                     },
@@ -39,7 +39,7 @@ namespace Plantify_Project_The_Webshop.Data
                     {
                         Name = "Fiddle Leaf Fig",
                         ImagePath = "fiddle_leaf_fig.jpg",
-                        Price = 50,
+                        Price = 130,
                         Category = "Houseplants",
                         Description = "Trendy indoor tree with violin-shaped leaves."
                     },
@@ -47,7 +47,7 @@ namespace Plantify_Project_The_Webshop.Data
                     {
                         Name = "Peace Lily",
                         ImagePath = "peace_lily.jpg",
-                        Price = 30,
+                        Price = 95,
                         Category = "Houseplants",
                         Description = "Low-maintenance plant with elegant white flowers."
                     },
@@ -55,7 +55,7 @@ namespace Plantify_Project_The_Webshop.Data
                     {
                         Name = "Spider Plant",
                         ImagePath = "spider_plant.jpg",
-                        Price = 20,
+                        Price = 250,
                         Category = "Houseplants",
                         Description = "Air-purifying plant with long, arching leaves."
                     },
@@ -63,7 +63,7 @@ namespace Plantify_Project_The_Webshop.Data
                     {
                         Name = "Pothos",
                         ImagePath = "pothos.jpg",
-                        Price = 15,
+                        Price = 150,
                         Category = "Houseplants",
                         Description = "Easy-to-care-for trailing vine with heart-shaped leaves."
                     },
@@ -71,7 +71,7 @@ namespace Plantify_Project_The_Webshop.Data
                     {
                         Name = "Aloe Vera",
                         ImagePath = "aloe_vera.jpg",
-                        Price = 12,
+                        Price = 120,
                         Category = "Houseplants",
                         Description = "Succulent plant with soothing gel for skin care."
                     },
@@ -79,7 +79,7 @@ namespace Plantify_Project_The_Webshop.Data
                     {
                         Name = "Philodendron",
                         ImagePath = "philodendron.jpg",
-                        Price = 18,
+                        Price = 280,
                         Category = "Houseplants",
                         Description = "Popular indoor plant with heart-shaped leaves."
                     },
@@ -87,7 +87,7 @@ namespace Plantify_Project_The_Webshop.Data
                     {
                         Name = "Chinese Money Plant",
                         ImagePath = "chinese_money_plant.jpg",
-                        Price = 22,
+                        Price = 220,
                         Category = "Houseplants",
                         Description = "Unique plant with round, coin-shaped leaves."
                     },
@@ -95,7 +95,7 @@ namespace Plantify_Project_The_Webshop.Data
                     {
                         Name = "Rubber Plant",
                         ImagePath = "rubber_plant.jpg",
-                        Price = 28,
+                        Price = 210,
                         Category = "Houseplants",
                         Description = "Indoor tree with thick, glossy leaves."
                     },
@@ -105,47 +105,47 @@ namespace Plantify_Project_The_Webshop.Data
                     {
                         Name = "Terracotta Pot",
                         ImagePath = "terracotta_pot.jpg",
-                        Price = 10,
+                        Price = 60,
                         Category = "Pots",
-                        Description = "Classic terracotta pot for indoor plants."
+                        Description = "Classic terracotta pot for both indoor and outdoor plants."
                     },
                     new Product
                     {
                         Name = "Ceramic Planter",
                         ImagePath = "ceramic_planter.jpg",
-                        Price = 18,
+                        Price = 180,
                         Category = "Pots",
-                        Description = "Modern ceramic planter with drainage hole."
-                    },
+                        Description = "A modern and classic ceramic pot for every occasion."
+					},
                     new Product
                     {
-                        Name = "Hanging Basket",
+                        Name = "Hanging Discoball Flowerpot",
                         ImagePath = "hanging_basket.jpg",
-                        Price = 25,
+                        Price = 250,
                         Category = "Pots",
-                        Description = "Woven hanging basket for trailing plants."
-                    },
+                        Description = "An eye-catching disco ball pot that can turn any room into a party."
+					},
                     new Product
                     {
-                        Name = "Self-Watering Pot",
-                        ImagePath = "self_watering_pot.jpg",
+                        Name = "Plantable Pot",
+                        ImagePath = "plantable_pot.jpg",
                         Price = 30,
                         Category = "Pots",
-                        Description = "Pot with built-in reservoir for easy plant care."
-                    },
+                        Description = "A plantable pot for those who want to grow from scratch on their own."
+					},
                     new Product
                     {
-                        Name = "Decorative Plant Stand",
-                        ImagePath = "decorative_plant_stand.jpg",
-                        Price = 35,
+                        Name = "Large Pot",
+                        ImagePath = "large_pot.jpg",
+                        Price = 399,
                         Category = "Pots",
-                        Description = "Stylish plant stand for displaying indoor plants."
-                    },
+                        Description = "An impressive floor pot for your large plants."
+					},
                     new Product
                     {
                         Name = "Metal Plant Pot",
                         ImagePath = "metal_plant_pot.jpg",
-                        Price = 20,
+                        Price = 100,
                         Category = "Pots",
                         Description = "Industrial-style metal pot for modern decor."
                     },
@@ -155,7 +155,7 @@ namespace Plantify_Project_The_Webshop.Data
                     {
                         Name = "Gardening Gloves",
                         ImagePath = "gardening_gloves.jpg",
-                        Price = 12,
+                        Price = 65,
                         Category = "Tools/Accessories",
                         Description = "Protective gloves for gardening tasks."
                     },
@@ -163,7 +163,7 @@ namespace Plantify_Project_The_Webshop.Data
                     {
                         Name = "Pruning Shears",
                         ImagePath = "pruning_shears.jpg",
-                        Price = 15,
+                        Price = 85,
                         Category = "Tools/Accessories",
                         Description = "Sharp shears for trimming plants."
                     },
@@ -171,23 +171,23 @@ namespace Plantify_Project_The_Webshop.Data
                     {
                         Name = "Watering Can",
                         ImagePath = "watering_can.jpg",
-                        Price = 20,
+                        Price = 40,
                         Category = "Tools/Accessories",
                         Description = "Essential tool for watering indoor plants."
                     },
                     new Product
                     {
-                        Name = "Misting Bottle",
-                        ImagePath = "misting_bottle.jpg",
-                        Price = 10,
+                        Name = "Garden Tools",
+                        ImagePath = "garden_tools.jpg",
+                        Price = 75,
                         Category = "Tools/Accessories",
-                        Description = "Spray bottle for misting indoor plants."
-                    },
+                        Description = "A set of three useful garden tools."
+					},
                     new Product
                     {
                         Name = "Plant Food",
                         ImagePath = "plant_food.jpg",
-                        Price = 8,
+                        Price = 199,
                         Category = "Tools/Accessories",
                         Description = "Nutrient-rich food for healthy plant growth."
                     },
@@ -195,7 +195,7 @@ namespace Plantify_Project_The_Webshop.Data
                     {
                         Name = "Soil Moisture Meter",
                         ImagePath = "soil_moisture_meter.jpg",
-                        Price = 15,
+                        Price = 249,
                         Category = "Tools/Accessories",
                         Description = "Tool for measuring soil moisture levels."
                     },
@@ -203,7 +203,7 @@ namespace Plantify_Project_The_Webshop.Data
                     {
                         Name = "Plant Mister",
                         ImagePath = "plant_mister.jpg",
-                        Price = 12,
+                        Price = 125,
                         Category = "Tools/Accessories",
                         Description = "Handy mister for keeping humidity levels up."
                     },
@@ -211,18 +211,18 @@ namespace Plantify_Project_The_Webshop.Data
                     {
                         Name = "Plant Labels",
                         ImagePath = "plant_labels.jpg",
-                        Price = 5,
+                        Price = 25,
                         Category = "Tools/Accessories",
                         Description = "Labels for identifying different plants."
                     },
                     new Product
                     {
-                        Name = "Plant Stand",
-                        ImagePath = "plant_stand.jpg",
+                        Name = "Glass container",
+                        ImagePath = "cutting_jar.jpg",
                         Price = 30,
                         Category = "Tools/Accessories",
-                        Description = "Stylish stand for displaying potted plants."
-                    });
+                        Description = "A glass container for your plant cuttings."
+					});
             }
 
             database.SaveChanges();
