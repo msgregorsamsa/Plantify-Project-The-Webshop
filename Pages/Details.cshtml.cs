@@ -9,12 +9,13 @@ namespace Plantify_Project_The_Webshop.Pages
     public class DetailsModel : PageModel
     {
         private readonly AppDbContext database;
+        private readonly AccessControl accessControl;
         public Product Product { get; set; }
-        public List<Cart> Cart { get; set; }
 
-        public DetailsModel(AppDbContext database)
+        public DetailsModel(AppDbContext database, AccessControl accessControl)
         {
-            this.database = database;
+            this.database = database; //För att få åtkomst till databasen och accesskontrollen i detta scope
+            this.accessControl = accessControl;
         }
 
         private Product GetProductById(int id)
@@ -27,17 +28,22 @@ namespace Plantify_Project_The_Webshop.Pages
             Product = GetProductById(id);
         }
 
-
-
-        public IActionResult OnPostAddToCart(int id)
+        public IActionResult OnPost(int id) //Lägg till en vara i varukurgen
         {
-            var productToAdd = GetProductById(id);
+            Product = GetProductById(id);
 
-            if (productToAdd != null)
+            if (Product != null)
             {
-                var newCartItem = new Cart { Products = productToAdd };
+                // Skapa en ny cart som tillhör den nuvarande inloggade användare om minst en produkt blivit tillagd. 
+                var newCartItem = new Cart { AccountID = accessControl.LoggedInAccountID,
+                                             ProductId = id, //Ändra till productname?? 
+                                             Quantity = 1};
 
-                Cart.Add(newCartItem);
+                // Lägg till varan i databasen (varukorgen)
+                database.Carts.Add(newCartItem);
+
+                // Spara varan i databasen (varukorgen) 
+                database.SaveChanges();
 
                 return RedirectToPage("/Cart");
             }

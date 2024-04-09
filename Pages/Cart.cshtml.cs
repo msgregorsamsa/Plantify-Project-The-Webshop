@@ -1,55 +1,84 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Plantify_Project_The_Webshop.Data;
 using Plantify_Project_The_Webshop.Models;
+
 using System.Collections.Generic;
 using System.Linq;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Plantify_Project_The_Webshop.Pages
 {
     public class CartModel : PageModel
     {
-        //Konstruktorer
-        public List<Cart> Cart { get; set; }  // Definierar Cart-egenskapen
-        public Product Product { get; set; }
 
         //Variabler
+        public List<Cart> Carts { get; set; } 
+        public Product Product { get; set; }
+
+
         public int CountItems { get; set; }
         public double TotalPrice { get; set; }
         public string emptyCart { get; set; }
 
-        //Metoder
-        public void GetCartItems()
-        {
-            if (Cart == null || !Cart.Any())
-            {
-                emptyCart = "Your cart is empty!";
-            }
+        private readonly AppDbContext database;
+        private readonly AccessControl accessControl;
 
-            else
-            {
-                // lägg till kod för att visa om saker finns i ens cart
-            }
+        public CartModel(AppDbContext database, AccessControl accessControl) //För att få åtkomst till databasen och accesskontrollen i detta scope
+        {
+            this.database = database;
+            this.accessControl = accessControl;
         }
 
-        public void CountCartItems() //Räkna antalet produkter i varukorgen
+		//Metoder
+		public List<Cart> GetCartItems()
+		{
+			// Hämta alla varukorgsobjekt för den inloggade användaren inklusive produktinformation
+			var cartItems = database.Carts
+				.Where(cart => cart.AccountID == accessControl.LoggedInAccountID)
+				.Include(cart => cart.Products) 
+				.ToList();
+
+			if (cartItems != null)
+			{
+				return cartItems;
+			}
+			else
+			{
+				emptyCart = "Your cart is empty!";
+				return null;
+			}
+		}
+
+
+		public void CountCartItems() //Räkna antalet produkter i varukorgen
         {
-            CountItems = Cart.Sum(cart => cart.Quantity);
+            CountItems = Carts.Sum(cart => cart.Quantity);
         }
 
         public double CalculateTotalPrice() //Räkna ut totala priset av produkterna i varukorgen
         {
-            TotalPrice = Cart.Sum(cart => cart.Products.Price * cart.Quantity);
+            TotalPrice = Carts.Sum(cart => cart.Products.Price * cart.Quantity);
             return TotalPrice;
         }
 
 
-        public void OnGet(List<Cart> carts) //Anropa ovan metoder för att samla och presentera innehållet i varukorgen
-        {
-            Cart = carts; // Tilldela värden till Cart-egenskapen
-            GetCartItems();
-            CalculateTotalPrice();
-            CountCartItems();
-        }
-    }
+		public void OnGet()
+		{
+			Carts = GetCartItems();
+
+			// Kontrollera om varukorgen inte är tom innan du utför beräkningar
+			if (Carts != null && Carts.Any())
+			{
+				CalculateTotalPrice();
+				CountCartItems();
+			}
+			else
+			{
+				emptyCart = "Your cart is empty!";
+			}
+		}
+	}
 }

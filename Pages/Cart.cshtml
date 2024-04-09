@@ -1,53 +1,67 @@
 ﻿@page
 @model Plantify_Project_The_Webshop.Pages.CartModel
 @{
-    ViewData["Title"] = "Shopping Cart";
+	ViewData["Title"] = "Shopping Cart";
 }
 
-<h1>Shopping Cart</h1>
+<h1>Your Cart</h1>
 
 <table>
-    <thead>
-        <tr>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Total</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+	<thead>
+		<tr>
+			<th>Image</th>
+			<th>Name</th>
+			<th>Price</th>
+			<th>Quantity</th>
+			<th>Total</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
 
-            @if (Model.Cart == null || !Model.Cart.Any()) 
-            {
-                <p id="emptyCart">@Model.emptyCart</p>
-            }
-            else
-            {
-                @foreach (var cartItem in Model.Cart)
-                {
-                    <tr>
-                    <td><img src="Images/@cartItem.Products.ImagePath" alt="@cartItem.Products.Name" /></td>
-                        <td>@cartItem.Products.Name</td>
-                        <td>@cartItem.Products.Price</td>
+		<div class="shoppingCart">
 
-                    </tr>
-                }
-            }
+			@if (Model.Carts == null || !Model.Carts.Any())
+			{
+				<p id="emptyCart">@Model.emptyCart</p>
+			}
 
+			else
+			{
 
-    </tbody>
+				@foreach (var cartItem in Model.Carts)
+				{
+				<tr>
+					<td><img src="Images/@cartItem.Products.ImagePath" alt="@cartItem.Products.Name" /></td>
+					<td>@cartItem.Products.Name</td>
+					<td>@cartItem.Products.Price</td>
+					<td>@cartItem.Quantity</td> <!-- Använd kvantitet här om det behövs -->
+					<td>@(cartItem.Products.Price * cartItem.Quantity)</td> <!-- Beräkna totalpriset för varje objekt i varukorgen -->
+					<td>
+				</tr>
+				}
+
+			}
+
+		</div>
+
+	</tbody>
+
 </table>
 
 <div class="cart-total">
-    <p>Total: @Model.TotalPrice</p>
-    <form method="post">
-        <button type="submit">Clear Cart</button>
-        <button type="submit">Proceed to Checkout</button>
-    </form>
+	<p>Total: @Model.TotalPrice</p>
 
-    <form asp-page="/Index" method="get">
-        <button type="submit">Return to start</button>
-    </form>
+	@* Lägg till en koppling till en metod som tömmer varukorgen *@
+	<form method="post">
+		<button type="submit">Clear Cart</button>
+	</form>
+
+	<form asp-page="/OrderConfirmation" method="get">
+		<button type="submit">Proceed to Checkout</button>
+	</form>
+
+	<form asp-page="/Index" method="get">
+		<button type="submit">Return to start</button>
+	</form>
 </div>
