@@ -1,67 +1,59 @@
 ﻿@page
 @model Plantify_Project_The_Webshop.Pages.CartModel
 @{
-	ViewData["Title"] = "Shopping Cart";
+    ViewData["Title"] = "Shopping Cart";
 }
 
-<h1>Your Cart</h1>
+<div id="shopping-cart-page">
+    <h1 class="cart-title">Your Items</h1>
 
-<table>
-	@* <thead>
-		<tr>
-			<th>Image</th>
-			<th>Name</th>
-			<th>Price</th>
-			<th>Quantity</th>
-			<th>Total</th>
-			<th></th>
-		</tr>
-	</thead> *@
-	<tbody>
-
-		<div class="shoppingCart">
-			@if (Model.Carts.Any())
-			{
-				@foreach (var cartItemGroup in Model.Carts.GroupBy(c => c.ProductId))
-				{
-				<tr>
-					<td><img src="Images/@cartItemGroup.First().Products.ImagePath" alt="@cartItemGroup.First().Products.Name" /></td>
-					<td>@cartItemGroup.First().Products.Name</td>
-					<td>Price: @cartItemGroup.First().Products.Price SEK</td>
-						@if (cartItemGroup.Count() > 1)
-						{
-						<td>Quantity: @cartItemGroup.Sum(c => c.Quantity)</td>
-						}
-						else
-						{
-						<td>Quantity: @cartItemGroup.First().Quantity</td>
-						}
-				</tr>
-				}
-			}
-			else
-			{
-			<p id="emptyCart">@Model.emptyCart</p>
-			}
-		</div>
-
-	</tbody>
-
-</table>
+    <table class="cart-table">
+        <thead>
+            <!-- Table head content -->
+        </thead>
+        <tbody>
+            <div class="shopping-cart">
+                @if (Model.Carts.Any())
+                {
+                    @foreach (var cartItemGroup in Model.Carts.GroupBy(c => c.ProductId))
+                    {
+                    <tr class="cart-item">
+                        <td><img src="Images/@cartItemGroup.First().Products.ImagePath" alt="@cartItemGroup.First().Products.Name" class="cart-item-image" /></td>
+                        <td>@cartItemGroup.First().Products.Name</td>
+                        <td>Price: @cartItemGroup.First().Products.Price SEK</td>
+                            @if (cartItemGroup.Count() > 1)
+                            {
+                            <td>Quantity: @cartItemGroup.Sum(c => c.Quantity)</td>
+                            }
+                            else
+                            {
+                            <td>Quantity: @cartItemGroup.First().Quantity</td>
+                            }
+                    </tr>
+                    }
+                }
+                else
+                {
+                <p id="empty-cart-message">@Model.emptyCart</p>
+                }
+</div>
+        </tbody>
+    </table>
 
 <div class="cart-total">
-	<p>Total: @Model.TotalPrice</p>
+    <p>Your Total: @Model.TotalPrice SEK</p>
 
-	@* Knappar *@
-	<form method="post">
-		<button type="submit" asp-page-handler="ClearCart">Clear Cart</button>
-	</form>
+    <!-- Buttons -->
+    <form class="place-order-form" asp-page="/OrderConfirmation" method="get">
+        <button type="submit" class="place-order-button">Place Order</button>
+    </form>
 
-	<form asp-page="/OrderConfirmation" method="get">
-		<button type="submit">Place Order</button>
-	</form>
+    <form class="clear-cart-form" method="post">
+        <button type="submit" class="clear-cart-button" asp-page-handler="ClearCart">Clear Cart</button>
+    </form>
 
-	<form asp-page="/Index" method="get">
-		<button type="submit">Return to start</button>
-	</form>
+    <form class="return-to-start-form" asp-page="/Index" method="get">
+        <button type="submit" class="return-to-start-button">Return to start</button>
+    </form>
+</div>
 </div>

@@ -4,11 +4,15 @@
     ViewData["Title"] = "Order Confirmation";
 }
 
-<h1>Order Confirmation</h1>
+<div id="order-confirmation">
+    <h1 class="confirmation-title">Order Confirmation</h1>
 
-<p>Thank you for your order!</p>
-<p>Total: @Model.TotalPrice</p>
+    <div class="confirmation-message">
+        <p>Thank you for your order!</p>
+        <p>Total: <span class="total-price">@Model.TotalPrice</span></p>
+    </div>
 
-<form asp-page="/Index" method="get">
-    <button type="submit">Return to Start</button>
-</form>
+    <form class="return-form" asp-page="/Index" method="get">
+        <button type="submit" class="return-button">Return to Start</button>
+    </form>
+</div>

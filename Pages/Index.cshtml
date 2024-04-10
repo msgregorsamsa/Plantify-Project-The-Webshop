@@ -5,86 +5,42 @@
     ViewData["Title"] = "Search";
 }
 
-<h1>Welcome, @accessControl.LoggedInAccountName!</h1>
+<div id="search-page">
+    <h1 class="welcome-message">Welcome, @accessControl.LoggedInAccountName!</h1>
 
-<a href="/cart">View Cart</a>
+    <a href="/cart" class="view-cart-link">View Cart</a>
 
-<form method="get">
-    <input type="text" name="searchText" placeholder="Search for a product by name..." />
-    <select name="category">
-        <option value="">All Categories</option>
-        <option value="Houseplants">Houseplants</option>
-        <option value="Pots">Pots</option>
-        <option value="Tools/Accessories">Tools & Accessories</option>
-    </select>
-    <button type="submit">Search</button>
-</form>
+    <form class="search-form" method="get">
+        <input type="text" name="searchText" class="search-input" placeholder="Search for a product by name..." />
+        <select name="category" class="category-select">
+            <option value="">All Categories</option>
+            <option value="Houseplants">Houseplants</option>
+            <option value="Pots">Pots</option>
+            <option value="Tools/Accessories">Tools & Accessories</option>
+        </select>
+        <button type="submit" class="search-button">Search</button>
+    </form>
 
-<div class="product-list">
-    @foreach (var product in Model.Products)
+    <div class="product-list">
+        @foreach (var product in Model.Products)
+        {
+            <div class="product">
+                <a asp-page="Details" asp-route-id="@product.ID" class="product-link">
+                    <img src="Images/@product.ImagePath" alt="@product.Name" class="product-image" />
+                    <h2 class="product-name">@product.Name</h2>
+                    <p class="product-price">@product.Price SEK</p>
+                    <p class="product-description">@product.Description</p>
+                </a>
+                <form method="post" asp-page="/Details" class="add-to-cart-form">
+                    <input type="hidden" name="id" value="@product.ID" class="product-id" />
+                    <button type="submit" class="add-to-cart-button">Add To Cart</button>
+                </form>
+            </div>
+        }
+    </div>
+
+    @if (Model.Products.Count == 0)
     {
-        <div class="product">
-        <a asp-page="Details" asp-route-id="@product.ID">
-            <img src="Images/@product.ImagePath" alt="@product.Name"/>
-            <h2>@product.Name</h2>
-            <p>@product.Price</p>
-            <p>@product.Description</p>
-            @* Eventuellt lägga till en knapp här (click for more details) för visibility *@
-        </a>
-        </div>
+        <p class="no-products-message">No products found.</p>
     }
-
 </div>
-
-@if (Model.Products.Count == 0)
-{
-    <p>No products found.</p>
-}
-
-@* Pagination here *@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@* @page
-@model IndexModel
-@inject Plantify_Project_The_Webshop.Data.AccessControl accessControl
-@{
-    ViewData["Title"] = "Home page";
-}
-
-<h1>Welcome, @accessControl.LoggedInAccountName!</h1>
-
-@if (Model.Product.ImagePath != null)
-{
-    <img src="images/@Model.Product.ImagePath" style="width: 200px" />
-}
-
-<form method="post">
-    <input type="text" name="itemText" placeholder="Search for something..." />
-    <button type="submit">Add Item</button>
-</form>
-
-<ul>
-    @foreach (var item in Model.Products)
-    {
-        <li>@item.Name</li> //En lista av produkter
-    }
-</ul>
-
-<form method="post"> </form> *@
