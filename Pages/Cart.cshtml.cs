@@ -5,10 +5,6 @@ using Microsoft.EntityFrameworkCore.Storage;
 using Plantify_Project_The_Webshop.Data;
 using Plantify_Project_The_Webshop.Models;
 
-using System.Collections.Generic;
-using System.Linq;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
-
 namespace Plantify_Project_The_Webshop.Pages
 {
     public class CartModel : PageModel
@@ -23,6 +19,7 @@ namespace Plantify_Project_The_Webshop.Pages
         public double TotalPrice { get; set; }
         public string emptyCart { get; set; }
 
+		//Databas
         private readonly AppDbContext database;
         private readonly AccessControl accessControl;
 
@@ -52,18 +49,33 @@ namespace Plantify_Project_The_Webshop.Pages
 			}
 		}
 
-
-		public void CountCartItems() //Räkna antalet produkter i varukorgen
+		public void CountCartItems() 
         {
             CountItems = Carts.Sum(cart => cart.Quantity);
         }
 
-        public double CalculateTotalPrice() //Räkna ut totala priset av produkterna i varukorgen
+        public double CalculateTotalPrice() 
         {
             TotalPrice = Carts.Sum(cart => cart.Products.Price * cart.Quantity);
             return TotalPrice;
         }
 
+		public ActionResult OnPostClearCart()
+		{
+			//Återanvänder koden som är för att hämta in alla varor i en varukorg
+			var cartItems = database.Carts
+				.Where(c => c.AccountID == accessControl.LoggedInAccountID)
+				.ToList();
+
+			if (cartItems != null && cartItems.Any())
+			{
+				database.Carts.RemoveRange(cartItems);
+				database.SaveChanges();
+
+			}
+
+			return RedirectToPage("/Index");
+		}
 
 		public void OnGet()
 		{

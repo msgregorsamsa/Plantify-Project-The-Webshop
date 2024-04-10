@@ -45,34 +45,6 @@
 			}
 		</div>
 
-
-
-
-@* 		<div class="shoppingCart">
-
-
-			@if (Model.Carts.Any()) 
-			{
-			@foreach (var cartItem in Model.Carts)
-				{
-				<tr>
-					<td><img src="Images/@cartItem.Products.ImagePath" alt="@cartItem.Products.Name" /></td>
-					<td>@cartItem.Products.Name</td>
-					<td>Price: @cartItem.Products.Price SEK</td>
-					<td>Quantity: @cartItem.Quantity</td> 
-					<td>Total: @(cartItem.Products.Price * cartItem.Quantity)</td> <!-- Beräkna totalpriset för varje objekt i varukorgen -->
-					<td>
-				</tr>
-				}
-			}
-
-			else 
-			{
-				<p id="emptyCart">@Model.emptyCart</p>
-			}
-
-		</div> *@
-
 	</tbody>
 
 </table>
@@ -80,9 +52,9 @@
 <div class="cart-total">
 	<p>Total: @Model.TotalPrice</p>
 
-	@* Lägg till en koppling till en metod som tömmer varukorgen *@
+	@* Knappar *@
 	<form method="post">
-		<button type="submit">Clear Cart</button>
+		<button type="submit" asp-page-handler="ClearCart">Clear Cart</button>
 	</form>
 
 	<form asp-page="/OrderConfirmation" method="get">
