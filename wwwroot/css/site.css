@@ -1,179 +1,151 @@
 
 /*STYLING FOR ALL PAGES*/
 
-#search-page, product-details-page, #shopping-cart-page, #order-confirmation {
+#search-page, #product-details-page, #shopping-cart-page, #order-confirmation {
     font-family: "EB Garamond", serif;
     letter-spacing: 1px;
+    text-wrap: wrap;
 
-    h1 {
-           color: darkgreen;
-       }
 
-    img
+    h1, h2, h3
 {
-    width: 250px;
-    height: 250px;
+    color: #5F8575;
+    font-weight: bolder;
+    text-transform: uppercase;
+    padding: 5px;
+}
+
+p {
+    color: black;
+    font-size: 1em;
+}
+
+a {
+    text-decoration: none;
+    color: seagreen;
+}
+
+img {
+    width: 200px;
+    height: 200px;
     object-fit: cover;
     border-radius: 50%;
     padding: 0.5em;
 }
 
-
-
 }
 
 
-/*INDEX/STARTPAGE*/
-/* Rubrik f�r startsidan */
-.welcome-message {
-}
+/*INDEX/SEARCHPAGE*/
 
-/* L�nk till varukorgen p� startsidan */
-.view-cart-link {
-}
-
-/* Formul�r f�r s�kning p� startsidan */
-.search-form {
-}
-
-/* Inmatningsf�lt f�r s�ktext p� startsidan */
-.search-input {
-}
-
-/* Rullgardinsmeny f�r kategorier p� startsidan */
-.category-select {
-}
-
-/* Knapp f�r att starta s�kningen p� startsidan */
-.search-button {
-}
-
-/* Lista med produkter p� startsidan */
-.product-list {
-}
-
-/* En produkt p� startsidan */
-.product {
-}
-
-/* L�nk till produktens detaljsida p� startsidan */
-.product-link {
-}
-
-/* Bild f�r en produkt p� startsidan */
-.product-image {
-}
-
-/* Namn f�r en produkt p� startsidan */
-.product-name {
-}
-
-/* Pris f�r en produkt p� startsidan */
-.product-price {
-}
-
-/* Beskrivning f�r en produkt p� startsidan */
-.product-description {
-}
-
-/* Formul�r f�r att l�gga till en produkt i varukorgen p� startsidan */
-.add-to-cart-form {
-}
-
-/* Id f�r en produkt p� startsidan */
-.product-id {
-}
-
-/* Knapp f�r att l�gga till en produkt i varukorgen p� startsidan */
-.add-to-cart-button {
-}
-
-/* Meddelande n�r inga produkter hittades p� startsidan */
-.no-products-message {
-}
-
-/*------------------------------------------------------------------------------------------------*/
-
-
-/*SEARCH PAGE*/
-
-/* Wrapper-div f�r s�ksidan */
+/* Wrapper-div för s�ksidan */
 #search-page {
-}
+    /* Rubrik för välkomstmeddelande på söksidan */
+    .welcome-message {
+        text-align: center;
+        padding: 5px;
+        margin: 0;
+     }
 
-/* Rubrik f�r v�lkomstmeddelande p� s�ksidan */
-.welcome-message {
-}
+     /* L�nk f�r att visa varukorg p� s�ksidan */
+    .view-cart-link {
+        display: flex;
+        justify-content: center;
+    }
+     
+     /* Formul�r f�r s�kning p� s�ksidan */
+    .search-form {
+        text-align: center;
+        padding: 1em;
+    }
+     
+     /* Inmatningsf�lt f�r s�kning p� s�ksidan */
+    .search-input {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        min-width: 300px;
+        border-radius: 1em;
+        padding: 3px;
+    }
+     
+     /* Dropdown-menyn f�r kategorier p� s�ksidan */
+    .category-select {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        min-width: 200px;
+        border-radius: 1em;
+        padding: 3px;
+    }
+     
+     /* Knapp f�r att utf�ra s�kning p� s�ksidan */
+    .search-button {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        min-width: 100px;
+        border-radius: 1em;
+        padding: 3px;
+        background-color: darkseagreen;
+        color: white;
+    }
+     
+     /* Lista med produkter p� s�ksidan */
+     .product-list {
+         display: grid;
+         grid-template-columns: repeat(5, 1fr);
+         grid-template-rows: repeat(5, 1fr);
+         grid-column-gap: 2px;
+         grid-row-gap: 2px;
+     }
+     
+     /* En enskild produkt i produktlistan p� s�ksidan */
+     .product {
 
-/* L�nk f�r att visa varukorg p� s�ksidan */
-.view-cart-link {
-}
+     }
+     
+     /* L�nk till produktens detaljsida p� s�ksidan */
+     .product-link {
+     }
+     
+     /* Bild f�r en produkt p� s�ksidan */
+     .product-image {
+     }
+     
+     /* Namn f�r en produkt p� s�ksidan */
+     .product-name {
+     }
+     
+     /* Pris f�r en produkt p� s�ksidan */
+     .product-price {
+     }
+     
+     /* Beskrivning f�r en produkt p� s�ksidan */
+     .product-description {
+     }
+     
+     /* Formul�r f�r att l�gga till en produkt i varukorgen p� s�ksidan */
+     .add-to-cart-form {
+     }
+     
+     /* ID f�r en produkt i varukorgen p� s�ksidan */
+     .product-id {
+     }
+     
+     /* Knapp f�r att l�gga till en produkt i varukorgen p� s�ksidan */
+    .add-to-cart-button {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        min-width: 100px;
+        border-radius: 1em;
+        padding: 3px;
+        background-color: darkseagreen;
+        color: white;
+    }
+     
+     /* Meddelande om tom varukorg p� s�ksidan */
+     .no-products-message {
+     }
 
-/* Formul�r f�r s�kning p� s�ksidan */
-.search-form {
-}'
- '
-
-/* Inmatningsf�lt f�r s�kning p� s�ksidan */
-.search-input {
-}
-
-/* Dropdown-menyn f�r kategorier p� s�ksidan */
-.category-select {
-}
-
-/* Knapp f�r att utf�ra s�kning p� s�ksidan */
-.search-button {
-}
-
-/* Lista med produkter p� s�ksidan */
-.product-list {
-}
-
-/* En enskild produkt i produktlistan p� s�ksidan */
-.product {
-}
-
-/* L�nk till produktens detaljsida p� s�ksidan */
-.product-link {
-}
-
-/* Bild f�r en produkt p� s�ksidan */
-.product-image {
-}
-
-/* Namn f�r en produkt p� s�ksidan */
-.product-name {
-}
-
-/* Pris f�r en produkt p� s�ksidan */
-.product-price {
-}
-
-/* Beskrivning f�r en produkt p� s�ksidan */
-.product-description {
-}
-
-/* Formul�r f�r att l�gga till en produkt i varukorgen p� s�ksidan */
-.add-to-cart-form {
-}
-
-/* ID f�r en produkt i varukorgen p� s�ksidan */
-.product-id {
-}
-
-/* Knapp f�r att l�gga till en produkt i varukorgen p� s�ksidan */
-.add-to-cart-button {
-}
-
-/* Meddelande om tom varukorg p� s�ksidan */
-.no-products-message {
 }
 
 /*------------------------------------------------------------------------------------------------*/
 
 /*DETAILS PAGE*/
-
 /* Wrapper f�r produktdetaljer-sidan */
 .product-details-page {
 }
