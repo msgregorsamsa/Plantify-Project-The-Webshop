@@ -23,6 +23,7 @@ namespace Plantify_Project_The_Webshop.Pages
 
         //Variabler
         public string searchText { get; set; }
+        public string category { get; set; }
         
 
         //Metoder
@@ -31,13 +32,18 @@ namespace Plantify_Project_The_Webshop.Pages
             Products = database.Products.ToList();
         }
 
-        public void OnGet(string searchText)
+        public void OnGet(string searchText, string category)
         {
             Setup();
 
             if(searchText != null) 
             {
                 Products = Products.Where(p => p.Name.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+            }
+
+            if(category != null && category != "All Categories") 
+            { 
+                Products = Products.Where(p => p.Category == category).ToList();
             }
 
         }
