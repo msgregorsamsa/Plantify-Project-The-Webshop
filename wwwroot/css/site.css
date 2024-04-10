@@ -1,5 +1,18 @@
+body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: darkgreen; 
+}
+
+a link {
+    color: darkseagreen;
+}
+
 img {
     width: 100px; 
     height: 100px; 
     object-fit: cover;
+    border-radius: 50%;
+    padding: 1em;
 }
+
+
