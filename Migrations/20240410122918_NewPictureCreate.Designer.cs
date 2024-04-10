@@ -11,8 +11,8 @@ using Plantify_Project_The_Webshop.Data;
 namespace Plantify_Project_The_Webshop.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240409192321_NewCreate")]
-    partial class NewCreate
+    [Migration("20240410122918_NewPictureCreate")]
+    partial class NewPictureCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

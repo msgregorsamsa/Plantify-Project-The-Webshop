@@ -3,16 +3,16 @@ body {
     color: darkgreen; 
 }
 
-a link {
+a {
     color: darkseagreen;
 }
 
 img {
-    width: 100px; 
-    height: 100px; 
+    width: 250px; 
+    height: 250px; 
     object-fit: cover;
     border-radius: 50%;
-    padding: 1em;
+    padding: 0.5em;
 }
 
 
