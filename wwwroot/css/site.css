@@ -1,5 +1,9 @@
 
 /*STYLING FOR ALL PAGES*/
+body {
+    background-color: darkslategrey;
+    padding: 1em;
+}
 
 #search-page, #product-details-page, #shopping-cart-page, #order-confirmation {
     font-family: "EB Garamond", serif;
@@ -13,11 +17,13 @@
     font-weight: bolder;
     text-transform: uppercase;
     padding: 5px;
+    margin: 0;
 }
 
 p {
     color: black;
     font-size: 1em;
+    padding: 3px;
 }
 
 a {
@@ -86,17 +92,26 @@ img {
     }
      
      /* Lista med produkter p� s�ksidan */
-     .product-list {
-         display: grid;
-         grid-template-columns: repeat(5, 1fr);
-         grid-template-rows: repeat(5, 1fr);
-         grid-column-gap: 2px;
-         grid-row-gap: 2px;
-     }
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 8px;
+}
      
      /* En enskild produkt i produktlistan p� s�ksidan */
-     .product {
+.product {
+    background-color: white;
+    border-radius: 20px;
+    padding: 0.5em;
+    align-items: center;
+}
 
+     .product:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(73, 73, 73, 0.59);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
      }
      
      /* L�nk till produktens detaljsida p� s�ksidan */
@@ -104,11 +119,13 @@ img {
      }
      
      /* Bild f�r en produkt p� s�ksidan */
-     .product-image {
-     }
+.product-image {
+
+}
      
      /* Namn f�r en produkt p� s�ksidan */
      .product-name {
+         text-align:center;
      }
      
      /* Pris f�r en produkt p� s�ksidan */
