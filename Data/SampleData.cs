@@ -100,13 +100,13 @@ namespace Plantify_Project_The_Webshop.Data
                         Description = "Indoor tree with thick, glossy leaves."
                     },
 
-                    //Pots
+                    //Pots/Vases
                     new Product
                     {
                         Name = "Terracotta Pot",
                         ImagePath = "terracotta_pot.jpg",
                         Price = 60,
-                        Category = "Pots",
+                        Category = "Pots/Vases",
                         Description = "Classic terracotta pot for both indoor and outdoor plants."
                     },
                     new Product
@@ -114,40 +114,72 @@ namespace Plantify_Project_The_Webshop.Data
                         Name = "Ceramic Planter",
                         ImagePath = "ceramic_planter.jpg",
                         Price = 180,
-                        Category = "Pots",
+                        Category = "Pots/Vases",
                         Description = "A modern and classic ceramic pot for every occasion."
-					},
+                    },
                     new Product
                     {
                         Name = "Hanging Discoball Flowerpot",
                         ImagePath = "hanging_basket.jpg",
                         Price = 250,
-                        Category = "Pots",
+                        Category = "Pots/Vases",
                         Description = "An eye-catching disco ball pot that can turn any room into a party."
-					},
+                    },
                     new Product
                     {
                         Name = "Plantable Pot",
                         ImagePath = "plantable_pot.jpg",
                         Price = 30,
-                        Category = "Pots",
+                        Category = "Pots/Vases",
                         Description = "A plantable pot for those who want to grow from scratch on their own."
-					},
+                    },
                     new Product
                     {
                         Name = "Large Pot",
                         ImagePath = "large_pot.jpg",
                         Price = 399,
-                        Category = "Pots",
+                        Category = "Pots/Vases",
                         Description = "An impressive floor pot for your large plants."
-					},
+                    },
                     new Product
                     {
                         Name = "Metal Plant Pot",
                         ImagePath = "metal_plant_pot.jpg",
                         Price = 100,
-                        Category = "Pots",
+                        Category = "Pots/Vases",
                         Description = "Industrial-style metal pot for modern decor."
+                    },
+                    new Product
+                    {
+                        Name = "Metal plant pot with legs",
+                        ImagePath = "pot_with_legs.jpg",
+                        Price = 200,
+                        Category = "Pots/Vases",
+                        Description = "An elegant pot that raises your plant a little off the floor."
+                    },
+                    new Product
+                    {
+                        Name = "Golden pot",
+                        ImagePath = "golden_pot.jpg",
+                        Price = 140,
+                        Category = "Pots/Vases",
+                        Description = "A gold colored pot that creates a feeling of luxury in your home."
+                    },
+                    new Product
+                    {
+                        Name = "Round Vase",
+                        ImagePath = "round_vase.jpg",
+                        Price = 99,
+                        Category = "Pots/Vases",
+                        Description = "A small, stylish vase for smaller flower arrangements."
+                    },
+                    new Product
+                    {
+                        Name = "Fishbowl Vase",
+                        ImagePath = "fishbowl_vase.jpg",
+                        Price = 110,
+                        Category = "Pots/Vases",
+                        Description = "A classic glass bowl that resembles a fish bowl, perfect for all bouquets."
                     },
 
                     //Tools/Accessories
@@ -182,7 +214,7 @@ namespace Plantify_Project_The_Webshop.Data
                         Price = 75,
                         Category = "Tools/Accessories",
                         Description = "A set of three useful garden tools."
-					},
+                    },
                     new Product
                     {
                         Name = "Plant Food",
@@ -222,7 +254,15 @@ namespace Plantify_Project_The_Webshop.Data
                         Price = 30,
                         Category = "Tools/Accessories",
                         Description = "A glass container for your plant cuttings."
-					});
+                    },
+                    new Product
+                    {
+                        Name = "Repotting Mat",
+                        ImagePath = "repotting_mat.jpg",
+                        Price = 185,
+                        Category = "Tools/Accessories",
+                        Description = "A waterproof mat that reduces soiling and makes your replanting smooth and easy."
+                    });
             }
 
             database.SaveChanges();
