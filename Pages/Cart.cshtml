@@ -8,9 +8,6 @@
     <h1 class="cart-title">Your Items</h1>
 
     <table class="cart-table">
-        <thead>
-            <!-- Table head content -->
-        </thead>
         <tbody>
             <div class="shopping-cart">
                 @if (Model.Carts.Any())
@@ -36,24 +33,26 @@
                 {
                 <p id="empty-cart-message">@Model.emptyCart</p>
                 }
-</div>
+
         </tbody>
     </table>
 
-<div class="cart-total">
-    <p>Your Total: @Model.TotalPrice SEK</p>
+    <div class="cart-total">
+        <p>Your Total: @Model.TotalPrice SEK</p>
+    
+        <div class="cart-buttons">
+            <form class="place-order-form" asp-page="/OrderConfirmation" method="get">
+                <button type="submit" class="place-order-button">Place Order</button>
+            </form>
 
-    <!-- Buttons -->
-    <form class="place-order-form" asp-page="/OrderConfirmation" method="get">
-        <button type="submit" class="place-order-button">Place Order</button>
-    </form>
+            <form class="clear-cart-form" method="post">
+                <button type="submit" class="clear-cart-button" asp-page-handler="ClearCart">Clear Cart</button>
+            </form>
 
-    <form class="clear-cart-form" method="post">
-        <button type="submit" class="clear-cart-button" asp-page-handler="ClearCart">Clear Cart</button>
-    </form>
+            <form class="return-to-start-form" asp-page="/Index" method="get">
+                <button type="submit" class="return-to-start-button">Return to start</button>
+            </form>
+        </div>
 
-    <form class="return-to-start-form" asp-page="/Index" method="get">
-        <button type="submit" class="return-to-start-button">Return to start</button>
-    </form>
-</div>
+    </div>
 </div>

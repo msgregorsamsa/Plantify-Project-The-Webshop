@@ -8,18 +8,25 @@
 
     <div class="product-details">
         <img src="Images/@Model.Product.ImagePath" alt="@Model.Product.Name" class="product-image" />
+
         <h1 class="product-name">@Model.Product.Name</h1>
-        <p class="product-price">Price: @Model.Product.Price SEK</p>
-        <p class="product-category">Category: @Model.Product.Category</p>
-        <p class="product-description">Description: @Model.Product.Description</p>
+        <div class="product-information">
+            <p class="product-price">Price: @Model.Product.Price SEK</p>
+            <p class="product-category">Category: @Model.Product.Category</p>
+            <p class="product-description">Description: @Model.Product.Description</p>
+        </div>
 
-        <form method="post" class="add-to-cart-form">
-            <input type="hidden" name="id" value="@Model.Product.ID" class="product-id" />
-            <button type="submit" class="add-to-cart-button">Add To Cart</button>
-        </form>
 
-        <form asp-page="/Index" method="get" class="return-to-start-form">
-            <button type="submit" class="return-to-start-button">Return to Start</button>
-        </form>
+        <div class="details-buttons">
+            <form method="post" class="add-to-cart-form">
+                <input type="hidden" name="id" value="@Model.Product.ID" class="product-id" />
+                <button type="submit" class="add-to-cart-button">Add To Cart</button>
+            </form>
+
+            <form asp-page="/Index" method="get" class="return-to-start-form">
+                <button type="submit" class="return-to-start-button">Return to Start</button>
+            </form>
+        </div>
+
     </div>
 </div>
