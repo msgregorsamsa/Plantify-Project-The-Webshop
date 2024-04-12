@@ -43,4 +43,14 @@
     {
         <p class="no-products-message">No products found.</p>
     }
+
+    <form method="post">
+        <button type="submit" asp-page-handler="Previous" 
+                asp-route-searchText="@Model.searchText" asp-route-category="@Model.category">
+                Previous</button>
+        <button type="submit" asp-page-handler="Next" 
+                asp-route-searchText="@Model.searchText" asp-route-category="@Model.category">
+                Next</button>
+    </form>
+
 </div>
