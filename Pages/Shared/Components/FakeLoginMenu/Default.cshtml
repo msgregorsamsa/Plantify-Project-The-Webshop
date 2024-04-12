@@ -2,9 +2,12 @@
 @model IEnumerable<SelectListItem>;
 
 <form method="post" asp-page="/FakeLogin">
-    <label>
-        Log in as:
-        <select asp-items="@Model" name="AccountID" id="account-id"></select>
-    </label>
-    <button type="submit">Log In</button>
+    <div class="login">
+        <label>
+            Log in as:
+            <select asp-items="@Model" name="AccountID" id="account-id"></select>
+        </label>
+        <button type="submit" class="loginbtn">Log In</button>
+    </div>
+
 </form>

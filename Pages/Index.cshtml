@@ -8,9 +8,8 @@
 <div id="search-page">
     <h1 class="welcome-message">Welcome, @accessControl.LoggedInAccountName!</h1>
 
-    <a href="/cart" class="view-cart-link">View Cart</a>
 
-    <form class="search-form" method="get">
+    <form class="search-form" method="get" asp-page="./Index" asp-route-pageIndex="@Model.PageIndex">
         <input type="text" name="searchText" class="search-input" placeholder="Search for a product by name..." />
         <select name="category" class="category-select">
             <option value="">All Categories</option>
@@ -19,22 +18,32 @@
             <option value="Tools/Accessories">Tools & Accessories</option>
         </select>
         <button type="submit" class="search-button">Search</button>
+        <a href="/cart" class="view-cart-link">View Cart🛒</a>
+
     </form>
+
 
     <div class="product-list">
         @foreach (var product in Model.Products)
         {
             <div class="product">
+
+                <img src="Images/@product.ImagePath" alt="@product.Name" class="product-image" />
+                <h2 class="product-name">@product.Name</h2>
+                <p class="product-price">@product.Price SEK</p>
+
                 <a asp-page="Details" asp-route-id="@product.ID" class="product-link">
-                    <img src="Images/@product.ImagePath" alt="@product.Name" class="product-image" />
-                    <h2 class="product-name">@product.Name</h2>
-                    <p class="product-price">@product.Price SEK</p>
-                    <p class="product-description">@product.Description</p>
+                    <input type="hidden" name="id" value="@product.ID" class="product-id" />
+                    <button type="submit" class="show-more-details-button">Click for details</button>
                 </a>
+
                 <form method="post" asp-page="/Details" class="add-to-cart-form">
                     <input type="hidden" name="id" value="@product.ID" class="product-id" />
                     <button type="submit" class="add-to-cart-button">Add To Cart</button>
                 </form>
+
+
+
             </div>
         }
     </div>
@@ -45,12 +54,19 @@
     }
 
     <form method="post">
-        <button type="submit" asp-page-handler="Previous" 
-                asp-route-searchText="@Model.searchText" asp-route-category="@Model.category">
-                Previous</button>
-        <button type="submit" asp-page-handler="Next" 
-                asp-route-searchText="@Model.searchText" asp-route-category="@Model.category">
-                Next</button>
+        <input type="hidden" name="pageIndex" value="@Model.PageIndex" />
+        <button type="submit" asp-page-handler="Previous"
+                asp-route-searchText="@Model.searchText" asp-route-category="@Model.category"
+                class="pagination-button">
+            Previous
+        </button>
+        <button type="submit" asp-page-handler="Next"
+                asp-route-searchText="@Model.searchText" asp-route-category="@Model.category"
+                class="pagination-button">
+            Next
+        </button>
     </form>
+
+
 
 </div>

@@ -4,7 +4,7 @@
 
 namespace Plantify_Project_The_Webshop.Migrations
 {
-    public partial class test : Migration
+    public partial class NewProductsCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
