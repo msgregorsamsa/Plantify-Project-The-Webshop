@@ -101,6 +101,8 @@ namespace Plantify_Project_The_Webshop.Pages
             {
                 double totalPrice = CalculateTotalPrice();
 
+				OnPostClearCart();
+
                 return RedirectToPage("OrderConfirmation", new { totalPrice = totalPrice });
             }
             else
