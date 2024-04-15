@@ -1,5 +1,6 @@
 ﻿@page
 @model Plantify_Project_The_Webshop.Pages.OrderConfirmationModel
+@inject Plantify_Project_The_Webshop.Data.AccessControl accessControl
 @{
     ViewData["Title"] = "Order Confirmation";
 }
@@ -8,9 +9,11 @@
     <h1 class="confirmation-title">Order Confirmation</h1>
 
     <div class="confirmation-message">
-        <p>Thank you for your order!</p>
-        <p>Total: <span class="total-price">@Model.TotalPrice</span></p>
-    </div>
+        <p>Thank you, @accessControl.LoggedInAccountName for your order!</p>
+
+        @* Lägg till orderdatum? *@
+        <p>Your Total: @Model.TotalPrice SEK</p> 
+    </div> 
 
     <form class="return-form" asp-page="/Index" method="get">
         <button type="submit" class="return-button">Return to Start</button>

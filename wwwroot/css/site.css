@@ -9,6 +9,8 @@ body {
     border-radius: 50%;
     padding: 0.5em;
     margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
     }
 }
 
@@ -31,6 +33,7 @@ p {
     color: black;
     font-size: 1em;
     padding: 3px;
+    padding-left: 15px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -76,8 +79,8 @@ select#account-id {
     border-radius: 1em;
     padding: 5px;
     align-content: center;
-    background-color: white;
-    color: black;
+    background-color: darkgoldenrod;
+    color: white;
     border-style: none;
 }
 
@@ -242,6 +245,9 @@ form method[type="post"] {
 }
 /* Meddelande om tom varukorg p� s�ksidan */
 .no-products-message {
+    color: white;
+    font-size: 1em;
+    text-align: center;
 }
 
 }
@@ -278,13 +284,14 @@ form method[type="post"] {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    padding: 10px;
 }
 
 /* Bild f�r produktdetaljer */
 .product-image {
     display: flex;
-    width: 220px;
-    height: 220px;
+    width: 260px;
+    height: 260px;
 }
 
 .product-information {
@@ -295,6 +302,7 @@ form method[type="post"] {
 /* Namn f�r produktdetaljer */
 .product-name {
     text-align: center;
+    margin: 5px;
 }
 
 /* Pris f�r produktdetaljer */
@@ -470,6 +478,13 @@ form method[type="post"] {
 
 /*ORDER CONFIRMATION PAGE*/
 
+#order-confirmation {
+    background-color: white;
+    border-radius: 53px;
+    padding: 3em;
+    width: 500px;
+    margin: 0 auto;
+}
 /* Rubrik f�r orderbekr�ftelse */
 .confirmation-title {
 }
@@ -500,4 +515,5 @@ form method[type="post"] {
     display: flex;
     flex-direction: row;
     border-style: none;
+    margin: 0 auto;
 }

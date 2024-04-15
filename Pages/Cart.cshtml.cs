@@ -92,5 +92,23 @@ namespace Plantify_Project_The_Webshop.Pages
 				emptyCart = "Your cart is empty!";
 			}
 		}
-	}
+
+        public IActionResult OnPost() //Slussar till PlaceOrder
+        {
+            Carts = GetCartItems();
+
+            if (Carts != null && Carts.Any())
+            {
+                double totalPrice = CalculateTotalPrice();
+
+                return RedirectToPage("OrderConfirmation", new { totalPrice = totalPrice });
+            }
+            else
+            {
+                return RedirectToPage("/Cart");
+            }
+        }
+
+
+    }
 }

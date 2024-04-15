@@ -19,6 +19,7 @@ namespace Plantify_Project_The_Webshop.Pages
             this.accessControl = accessControl;
         }
 
+        public AccessControl AccessControl { get; set; } 
         public List<Product> Products { get; set; }
         public Account Account { get; set; }
         public Cart Carts { get; set; }
