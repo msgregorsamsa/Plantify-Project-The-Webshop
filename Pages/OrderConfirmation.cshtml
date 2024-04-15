@@ -9,9 +9,13 @@
     <h1 class="confirmation-title">Order Confirmation</h1>
 
     <div class="confirmation-message">
+        <p class="order-date">Order Date: @DateTime.Now.ToString()</p>
+        <p>Your Ordernumber: @Model.OrderNumber </p>
+
+
         <p id="t-message">Thank you, @accessControl.LoggedInAccountName for your order!</p>
 
-        <p class="order-date">Order Date: @DateTime.Now.ToString()</p>
+
         <p>Your Total: @Model.TotalPrice SEK</p> 
     </div> 
 
