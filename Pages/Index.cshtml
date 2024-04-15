@@ -53,19 +53,22 @@
         <p class="no-products-message">No products found.</p>
     }
 
-    <form method="post">
-        <input type="hidden" name="pageIndex" value="@Model.PageIndex" />
-        <button type="submit" asp-page-handler="Previous"
-                asp-route-searchText="@Model.searchText" asp-route-category="@Model.category"
-                class="pagination-button">
-            Previous
-        </button>
-        <button type="submit" asp-page-handler="Next"
-                asp-route-searchText="@Model.searchText" asp-route-category="@Model.category"
-                class="pagination-button">
-            Next
-        </button>
-    </form>
+    <div class="indexBtn">
+        <form method="post">
+            <input type="hidden" name="pageIndex" value="@Model.PageIndex" />
+            <button type="submit" asp-page-handler="Previous"
+                    asp-route-searchText="@Model.searchText" asp-route-category="@Model.category"
+                    class="pagination-button">
+                Previous
+            </button>
+            <button type="submit" asp-page-handler="Next"
+                    asp-route-searchText="@Model.searchText" asp-route-category="@Model.category"
+                    class="pagination-button">
+                Next
+            </button>
+        </form>
+    </div>
+
 
 
 

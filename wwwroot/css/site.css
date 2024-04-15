@@ -44,7 +44,6 @@ a {
 
 }
 
-
 /*INDEX/SEARCHPAGE*/
 
 /*Formulär för användarinloggning*/
@@ -57,6 +56,8 @@ form[method="post"][action="/FakeLogin"] {
     align-content: center;
     color: white;
     max-width: 300px;
+    font-weight: 100;
+    font-size: 15px;
     border-style: none;
 }
 
@@ -226,23 +227,32 @@ select#account-id {
 }
 
 /*Knappar för next och previous*/
+
 button.pagination-button {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-width: 100px;
     border-radius: 1em;
     padding: 5px;
     margin: 10px;
-    align-content: center;
     background-color: darkgoldenrod;
     color: white;
     border-style: none;
 }
 
-form method[type="post"] {
+.indexBtn{
     display: flex;
-    flex-direction: row;
     justify-content: center;
 }
+
+.pagination-button:disabled {
+    background-color: #cccccc; /* Grå färg för inaktiverade knappar */
+    cursor: not-allowed;
+}
+
+/*form method[type="post"] {
+    display: grid;
+    align-items: center;
+}*/
 /* Meddelande om tom varukorg p� s�ksidan */
 .no-products-message {
     color: white;
