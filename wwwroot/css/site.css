@@ -11,6 +11,7 @@ body {
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
+    overflow-x: hidden;
     }
 }
 
@@ -26,15 +27,16 @@ body {
     font-weight: bolder;
     text-transform: uppercase;
     padding: 5px;
-    margin: 0;
+    margin: 5px;
 }
 
 p {
     color: black;
     font-size: 1em;
-    padding: 3px;
-    padding-left: 15px;
+    padding: 5px;
+    padding-left: 14px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
 }
 
 a {
@@ -245,7 +247,7 @@ button.pagination-button {
 }
 
 .pagination-button:disabled {
-    background-color: #cccccc; /* Grå färg för inaktiverade knappar */
+    background-color: #cccccc;
     cursor: not-allowed;
 }
 
@@ -313,6 +315,12 @@ button.pagination-button {
 .product-name {
     text-align: center;
     margin: 5px;
+}
+
+.applicationLink a {
+    text-decoration: none;
+    color: seagreen;
+    font-weight: bolder;
 }
 
 /* Pris f�r produktdetaljer */
@@ -418,10 +426,6 @@ button.pagination-button {
     justify-content: center;
 }
 
-/* Meddelande n�r varukorgen �r tom */
-.empty-cart-message {
-}
-
 /* Formul�r f�r att placera en order fr�n varukorgen */
 .place-order-form {
 }
@@ -495,6 +499,17 @@ button.pagination-button {
     width: 500px;
     margin: 0 auto;
 }
+
+#t-message p {
+    font-size: 20px;
+}
+.order-date {
+    font-weight: 200;
+}
+
+p#empty-cart-message {
+    color: green;
+}
 /* Rubrik f�r orderbekr�ftelse */
 .confirmation-title {
 }
@@ -526,4 +541,14 @@ button.pagination-button {
     flex-direction: row;
     border-style: none;
     margin: 0 auto;
+}
+
+
+@media only screen and (max-width: 900px) {
+    #product-details-page .product-list {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        grid-column-gap: 10px;
+        grid-row-gap: 8px;
+    }
 }
