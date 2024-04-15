@@ -28,6 +28,8 @@
         {
             <div class="product">
 
+                <a asp-page="Details" asp-route-id="@product.ID" class="product-link">
+
                 <img src="Images/@product.ImagePath" alt="@product.Name" class="product-image" />
                 <h2 class="product-name">@product.Name</h2>
                 <p class="product-price">@product.Price SEK</p>
@@ -42,7 +44,7 @@
                     <button type="submit" class="add-to-cart-button">Add To Cart</button>
                 </form>
 
-
+                </a>
 
             </div>
         }
