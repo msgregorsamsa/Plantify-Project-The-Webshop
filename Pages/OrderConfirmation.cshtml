@@ -9,9 +9,9 @@
     <h1 class="confirmation-title">Order Confirmation</h1>
 
     <div class="confirmation-message">
-        <p>Thank you, @accessControl.LoggedInAccountName for your order!</p>
+        <p id="t-message">Thank you, @accessControl.LoggedInAccountName for your order!</p>
 
-        @* Lägg till orderdatum? *@
+        <p class="order-date">Order Date: @DateTime.Now.ToString()</p>
         <p>Your Total: @Model.TotalPrice SEK</p> 
     </div> 
 

@@ -11,6 +11,7 @@ body {
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
+    overflow-x: hidden;
     }
 }
 
@@ -26,15 +27,16 @@ body {
     font-weight: bolder;
     text-transform: uppercase;
     padding: 5px;
-    margin: 0;
+    margin: 5px;
 }
 
 p {
     color: black;
     font-size: 1em;
-    padding: 3px;
-    padding-left: 15px;
+    padding: 5px;
+    padding-left: 14px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
 }
 
 a {
@@ -43,7 +45,6 @@ a {
 }
 
 }
-
 
 /*INDEX/SEARCHPAGE*/
 
@@ -57,6 +58,8 @@ form[method="post"][action="/FakeLogin"] {
     align-content: center;
     color: white;
     max-width: 300px;
+    font-weight: 100;
+    font-size: 15px;
     border-style: none;
 }
 
@@ -226,23 +229,32 @@ select#account-id {
 }
 
 /*Knappar för next och previous*/
+
 button.pagination-button {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-width: 100px;
     border-radius: 1em;
     padding: 5px;
     margin: 10px;
-    align-content: center;
     background-color: darkgoldenrod;
     color: white;
     border-style: none;
 }
 
-form method[type="post"] {
+.indexBtn{
     display: flex;
-    flex-direction: row;
     justify-content: center;
 }
+
+.pagination-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/*form method[type="post"] {
+    display: grid;
+    align-items: center;
+}*/
 /* Meddelande om tom varukorg p� s�ksidan */
 .no-products-message {
     color: white;
@@ -303,6 +315,12 @@ form method[type="post"] {
 .product-name {
     text-align: center;
     margin: 5px;
+}
+
+.applicationLink a {
+    text-decoration: none;
+    color: seagreen;
+    font-weight: bolder;
 }
 
 /* Pris f�r produktdetaljer */
@@ -408,10 +426,6 @@ form method[type="post"] {
     justify-content: center;
 }
 
-/* Meddelande n�r varukorgen �r tom */
-.empty-cart-message {
-}
-
 /* Formul�r f�r att placera en order fr�n varukorgen */
 .place-order-form {
 }
@@ -485,6 +499,17 @@ form method[type="post"] {
     width: 500px;
     margin: 0 auto;
 }
+
+#t-message p {
+    font-size: 20px;
+}
+.order-date {
+    font-weight: 200;
+}
+
+p#empty-cart-message {
+    color: green;
+}
 /* Rubrik f�r orderbekr�ftelse */
 .confirmation-title {
 }
@@ -516,4 +541,14 @@ form method[type="post"] {
     flex-direction: row;
     border-style: none;
     margin: 0 auto;
+}
+
+
+@media only screen and (max-width: 900px) {
+    #product-details-page .product-list {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        grid-column-gap: 10px;
+        grid-row-gap: 8px;
+    }
 }
