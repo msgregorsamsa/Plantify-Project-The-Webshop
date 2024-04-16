@@ -9,14 +9,15 @@
     <h1 class="confirmation-title">Order Confirmation</h1>
 
     <div class="confirmation-message">
-        <p class="order-date">Order Date: @DateTime.Now.ToString()</p>
-        <p>Your Ordernumber: @Model.OrderNumber </p>
+        <div id="date-number">
+            <p> <b>Order Date: </b>@DateTime.Now.ToString() | <b>Ordernumber: </b>@Model.OrderNumber </p>
+        </div>
 
+        <div id="message-price">
+            <p>Thank you, @accessControl.LoggedInAccountName for your order!</p>
+            <p> <b>Your Total: </b>@Model.TotalPrice SEK</p>
+        </div>
 
-        <p id="t-message">Thank you, @accessControl.LoggedInAccountName for your order!</p>
-
-
-        <p>Your Total: @Model.TotalPrice SEK</p> 
     </div> 
 
     <form class="return-form" asp-page="/Index" method="get">

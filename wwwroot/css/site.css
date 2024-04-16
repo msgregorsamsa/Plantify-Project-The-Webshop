@@ -21,7 +21,8 @@ h1, h2 {
     font-weight: bolder;
     text-transform: uppercase;
     padding: 5px;
-    margin: 5px;
+    margin: 0;
+    text-align: center;
 }
 
 #search-page, #product-details-page, #shopping-cart-page, #order-confirmation 
@@ -241,7 +242,7 @@ button.pagination-button {
     cursor: not-allowed;
 }
 
-.no-products-message 
+.no-products-message
 {
     color: white;
     font-size: 1em;
@@ -253,7 +254,7 @@ button.pagination-button {
 .product-details-page {
     background-color: white;
     border-radius: 53px;
-    padding: 1.5em;
+    padding: 12px;
     width: 500px;
     margin: 0 auto;
 }
@@ -263,7 +264,7 @@ button.pagination-button {
     padding: 5px;
     margin: 10px;
     align-items: center;
-    border-radius: 5px;
+    border-radius: 10px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 200;
     widht: 350px;
@@ -281,10 +282,11 @@ button.pagination-button {
     display: flex;
     width: 260px;
     height: 260px;
+    padding: 0;
 }
 
 .product-information {
-    border-radius: 5px;
+    border-radius: 20px;
     background-color: #ECECEC;
     padding: 15px;
 }
@@ -294,6 +296,7 @@ button.pagination-button {
     margin: 5px;
     font-family: "EB Garamond", serif;
     font-weight: 600;
+    padding: 0;
 }
 
 .applicationLink a {
@@ -324,9 +327,10 @@ button.pagination-button {
 #shopping-cart-page {
     background-color: white;
     border-radius: 53px;
-    padding: 1.5em;
+    padding: 12px;
     width: 500px;
     margin: 0 auto;
+    text-align: center;
 }
 
 /* En produkt i varukorgen */
@@ -337,7 +341,7 @@ button.pagination-button {
     padding: 5px;
     margin: 10px;
     align-items: center;
-    border-radius: 5px;
+    border-radius: 20px;
     background-color: #ECECEC;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 200;
@@ -352,7 +356,9 @@ button.pagination-button {
 
 /* Totalpris f�r varukorgen */
 .cart-total {
+    font-size: 15px;
     font-weight: 400;
+    padding: 5px;
 }
 
 .cart-buttons {
@@ -422,8 +428,19 @@ button.pagination-button {
 #t-message p {
     font-size: 25px;
 }
-.order-date {
+#date-number {
     font-weight: 200;
+    font-size: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 0;
+}
+
+#message-price {
+    padding: 0.5em;
+    text-align: center;
+    font-size: 15px;
 }
 
 p#empty-cart-message {
@@ -446,7 +463,14 @@ p#empty-cart-message {
     margin: 0 auto;
 }
 
+/*----------------------------------------------*/
+
+
+/*Mediaquery startsida*/
 @media (max-width: 1530px) {
+    body {
+        padding: 2em;
+    }
 
     .welcome-message{
         font-size: 40px;
@@ -467,12 +491,12 @@ p#empty-cart-message {
     }
 
     .search-input {
-        min-width: 300px;
+        min-width: 280px;
         margin: 0.5em;
     }
 
     .category-select {
-        min-width: 280px;
+        min-width: 260px;
     }
 
     .search-button {
@@ -480,7 +504,7 @@ p#empty-cart-message {
     }
 }
 
-@media (max-width: 790px) {
+@media (max-width: 815px) {
 
     .welcome-message {
         font-size: 30px;
@@ -495,32 +519,77 @@ p#empty-cart-message {
     }
 }
 
-    @media (max-width: 640px) {
+@media (max-width: 620px) {
 
-        .welcome-message {
-            font-size: 26px;
-        }
-
-        .product-list {
-            grid-template-columns: repeat(1, 1fr);
-            grid-template-rows: repeat(10, 1fr);
-        }
-
-        .show-more-details-button,
-        .add-to-cart-button {
-            min-width: 100px;
-        }
-
-        .search-input {
-            min-width: 330px;
-            margin: 0.5em;
-        }
-
-        .category-select {
-            min-width: 280px;
-        }
-
-        .search-button {
-            min-width: 60px;
-        }
+    h1 {
+        font-size: 25px;
     }
+
+    .welcome-message {
+        font-size: 26px;
+    }
+
+    .product-list {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(10, 1fr);
+    }
+
+    .show-more-details-button,
+    .add-to-cart-button {
+        min-width: 100px;
+    }
+
+    .search-input {
+        min-width: 280px;
+        margin: 0.5em;
+    }
+
+    .category-select {
+        min-width: 240px;
+    }
+
+    .search-button {
+        min-width: 60px;
+    }
+}
+/*-----------------------------------------------------------*/
+
+/*Mediaquery för detaljsida, varukorg och orderbekräftelse*/
+
+@media (max-width: 620px) {
+
+    .product-details-page, #shopping-cart-page, #order-confirmation {
+        background-color: white;
+        border-radius: 53px;
+        padding: 12px;
+        width: 400px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 490px) and (min-width: 320px) {
+
+    body {
+        padding: 0;
+        margin: 0;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    #t-message p {
+        font-size: 12px;
+    }
+    
+    .product-details-page, #shopping-cart-page, #order-confirmation {
+        background-color: white;
+        border-radius: 20px;
+        width: 320px;
+        margin: 0 auto;
+    }
+
+    .loginbtn {
+        min-width: 60px;
+    }
+}
