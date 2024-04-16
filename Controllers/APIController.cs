@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Plantify_Project_The_Webshop.Data;
 using Plantify_Project_The_Webshop.Migrations;
 using Plantify_Project_The_Webshop.Models;
+using System.Web;
 using System.Xml.Linq;
 
 namespace Plantify_Project_The_Webshop.Controllers
@@ -20,7 +21,6 @@ namespace Plantify_Project_The_Webshop.Controllers
             this.database = database;
         }
 
-        //En enda endpoint som returnerar en lista med produkter
         [HttpGet]
         [Route("/products")]
         public List<Product> GetProducts()
@@ -30,13 +30,13 @@ namespace Plantify_Project_The_Webshop.Controllers
             //if-sats till max 10 produkter
         }
 
-        //Filtreringsmöjlighet på namn och kategori
 
         [HttpGet]
-        [Route("/products/{name}")]
-        public ActionResult GetProductByName(string name)
+        [Route("{name}")]
+        public ActionResult<Product> GetProductByName(string name)
         {
-            Product product = database.Products.FirstOrDefault(p => p.Name == name);
+
+            var product = database.Products.FirstOrDefault(p => p.Name == name);
 
             if (product == null)
             {
@@ -47,21 +47,21 @@ namespace Plantify_Project_The_Webshop.Controllers
         }
 
         [HttpGet]
-        [Route("/products/{category}")]
-        public ActionResult GetProductsByCategory(string category)
+        [Route("category/{category}")]
+        public ActionResult<List<Product>> GetProductsByCategory(string category)
         {
-            bool categoryExists = database.Products.Any(p => p.Category == category);
+            var urlFriendlyCategory = HttpUtility.UrlDecode(category);
 
-            if (categoryExists)
+            var product = database.Products.Where(p =>  p.Category == urlFriendlyCategory).ToList();
+
+            if(product.Count == 0)
             {
-                List<Product> products = 
-                    database.Products.Where(p => p.Category == category).ToList();
-                return Ok(products);
+                return NotFound();
             }
 
-            return NotFound();
-            
+            return Ok(product);
         }
+
         //10 produkter ska returneras per gång med parameter för sidnummer
 
         //Varje produkt ska ha namn, bild, pris, kategori och beskrivning
