@@ -23,46 +23,38 @@ namespace Plantify_Project_The_Webshop.Controllers
 
         [HttpGet]
         [Route("/products")]
-        public List<Product> GetProducts()
+        public ActionResult<List<Product>> GetProducts(
+                                            [FromQuery] string? name = "",
+                                            [FromQuery] string? category = "",
+                                            [FromQuery] int pageIndex = 1)
         {
-            return database.Products.ToList();
+            IQueryable<Product> query = database.Products;
 
-            //if-sats till max 10 produkter
-        }
+            if (!string.IsNullOrEmpty(name))
+            {
+                query = query.Where(p => p.Name == name);
+            }
 
+            if (!string.IsNullOrEmpty(category))
+            {
+                var urlFriendlyCategory = HttpUtility.UrlDecode(category); // eftersom vi har / i våra kategorinamn i databasen
+                query = query.Where(p =>p.Category == urlFriendlyCategory);
+            }
 
-        [HttpGet]
-        [Route("{name}")]
-        public ActionResult<Product> GetProductByName(string name)
-        {
+            //Håller koll på sida och antal produkter per sida.
+            int pageSize = 10;
+            int skipPages = (pageIndex - 1) * pageSize;
 
-            var product = database.Products.FirstOrDefault(p => p.Name == name);
+            var products = query.Skip(skipPages).Take(pageSize).ToList();
 
-            if (product == null)
+            if(products.Count == 0)
             {
                 return NotFound();
             }
 
-            return Ok(product);
+            return Ok(products);
         }
 
-        [HttpGet]
-        [Route("category/{category}")]
-        public ActionResult<List<Product>> GetProductsByCategory(string category)
-        {
-            var urlFriendlyCategory = HttpUtility.UrlDecode(category);
-
-            var product = database.Products.Where(p =>  p.Category == urlFriendlyCategory).ToList();
-
-            if(product.Count == 0)
-            {
-                return NotFound();
-            }
-
-            return Ok(product);
-        }
-
-        //10 produkter ska returneras per gång med parameter för sidnummer
 
         //Varje produkt ska ha namn, bild, pris, kategori och beskrivning
 
