@@ -5,97 +5,106 @@
     ViewData["Title"] = "Search";
 }
 
+
 <div id="search-page">
-    <h1 class="welcome-message">Welcome, @accessControl.LoggedInAccountName!</h1>
+    
+    <div id="header">
+        <h1 class="welcome-message">Welcome, @accessControl.LoggedInAccountName!</h1>
 
 
-    <form class="search-form" method="get" asp-page="./Index" asp-route-pageIndex="@Model.PageIndex">
-        <input type="text" name="searchText" class="search-input" placeholder="Search for a product by name..." />
-        <select name="category" class="category-select">
-            <option value="">All Categories</option>
-            <option value="Houseplants">Houseplants</option>
-            <option value="Pots/Vases">Pots & Vases</option>
-            <option value="Tools/Accessories">Tools & Accessories</option>
-        </select>
-        <button type="submit" class="search-button">Search</button>
-        <a href="/cart" class="view-cart-link">View Cart</a>
+        <form class="search-form" method="get" asp-page="./Index" asp-route-pageIndex="@Model.PageIndex">
+            <input type="text" name="searchText" class="search-input" placeholder="Search for a product by name..." />
+            <select name="category" class="category-select">
+                <option value="">All Categories</option>
+                <option value="Houseplants">Houseplants</option>
+                <option value="Pots/Vases">Pots & Vases</option>
+                <option value="Tools/Accessories">Tools & Accessories</option>
+            </select>
+            <button type="submit" class="search-button">Search</button>
+            <a href="/cart" class="view-cart-link">View Cart</a>
 
-    </form>
-
-
-    <div class="product-list">
-        @foreach (var product in Model.Products)
-        {
-            <div class="product">
-
-                <a asp-page="Details" asp-route-id="@product.ID" class="product-link">
-
-                <img src="Images/@product.ImagePath" alt="@product.Name" class="product-image" />
-                <h2 class="product-name">@product.Name</h2>
-                <p class="product-price">@product.Price SEK</p>
-
-                <a asp-page="Details" asp-route-id="@product.ID" class="product-link">
-                    <input type="hidden" name="id" value="@product.ID" class="product-id" />
-                    <button type="submit" class="show-more-details-button">Click for details</button>
-                </a>
-
-                <form method="post" asp-page="/Details" class="add-to-cart-form">
-                    <input type="hidden" name="id" value="@product.ID" class="product-id" />
-                    <button type="submit" class="add-to-cart-button">Add To Cart</button>
-                </form>
-
-                </a>
-
-            </div>
-        }
-    </div>
-
-    @if (Model.Products.Count == 0)
-    {
-        <p class="no-products-message">No products found.</p>
-    }
-
-    <div class="indexBtn">
-        <form method="post">
-            <input type="hidden" name="pageIndex" value="@Model.PageIndex" />
-            @if (Model.PageIndex == 0)
-            {
-                <button type="submit" asp-page-handler="Previous"
-                        asp-route-searchText="@Model.searchText" asp-route-category="@Model.category"
-                        class="pagination-button" disabled>
-                    Previous
-                </button>
-            }
-            else
-            {
-                <button type="submit" asp-page-handler="Previous"
-                        asp-route-searchText="@Model.searchText" asp-route-category="@Model.category"
-                        class="pagination-button">
-                    Previous
-                </button>
-            }
-
-            @if (Model.PageIndex == 2)
-            {
-                <button type="submit" asp-page-handler="Next"
-                        asp-route-searchText="@Model.searchText" asp-route-category="@Model.category"
-                        class="pagination-button" disabled>
-                    Next
-                </button>
-            }
-            else
-            {
-                <button type="submit" asp-page-handler="Next"
-                        asp-route-searchText="@Model.searchText" asp-route-category="@Model.category"
-                        class="pagination-button">
-                    Next
-                </button>
-            }
         </form>
     </div>
 
 
+    <div id="main">
+        <div class="product-list">
+            @foreach (var product in Model.Products)
+            {
+                <div class="product">
+
+                    <a asp-page="Details" asp-route-id="@product.ID" class="product-link">
+
+                        <img src="Images/@product.ImagePath" alt="@product.Name" class="product-image" />
+                        <h2 class="product-name">@product.Name</h2>
+                        <p class="product-price-index">@product.Price SEK</p>
+
+                        <div id="product-buttons">
+                            <a asp-page="Details" asp-route-id="@product.ID" class="product-link">
+                                <input type="hidden" name="id" value="@product.ID" class="product-id" />
+                                <button type="submit" class="show-more-details-button">Click for details</button>
+                            </a>
+
+                            <form method="post" asp-page="/Details" class="add-to-cart-form">
+                                <input type="hidden" name="id" value="@product.ID" class="product-id" />
+                                <button type="submit" class="add-to-cart-button">Add To Cart</button>
+                            </form>
+                        </div>
+
+                    </a>
+
+                </div>
+            }
+        </div>
+
+        @if (Model.Products.Count == 0)
+        {
+            <p class="no-products-message">No products found.</p>
+        }
+    </div>
 
 
+    <div id="footer">
+        <div class="indexBtn">
+            <form method="post">
+                <input type="hidden" name="pageIndex" value="@Model.PageIndex" />
+                @if (Model.PageIndex == 0)
+                {
+                    <button type="submit" asp-page-handler="Previous"
+                            asp-route-searchText="@Model.searchText" asp-route-category="@Model.category"
+                            class="pagination-button" disabled>
+                        Previous
+                    </button>
+                }
+                else
+                {
+                    <button type="submit" asp-page-handler="Previous"
+                            asp-route-searchText="@Model.searchText" asp-route-category="@Model.category"
+                            class="pagination-button">
+                        Previous
+                    </button>
+                }
+
+                @if (Model.PageIndex == 2)
+                {
+                    <button type="submit" asp-page-handler="Next"
+                            asp-route-searchText="@Model.searchText" asp-route-category="@Model.category"
+                            class="pagination-button" disabled>
+                        Next
+                    </button>
+                }
+                else
+                {
+                    <button type="submit" asp-page-handler="Next"
+                            asp-route-searchText="@Model.searchText" asp-route-category="@Model.category"
+                            class="pagination-button">
+                        Next
+                    </button>
+                }
+            </form>
+    </div>
+
+   
+    </div>
 
 </div>
