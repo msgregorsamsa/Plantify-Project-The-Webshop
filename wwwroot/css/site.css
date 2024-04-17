@@ -592,4 +592,28 @@ p#empty-cart-message {
     .loginbtn {
         min-width: 60px;
     }
+
+    .category-select {
+        min-width: 120px;
+    }
+
+    #shopping-cart-page {
+        width: 320px;
+
+    }
+    .cart-item {
+        width: 300px;
+    }
+    .cart-item td {
+        font-size: 12px;
+    }
+
+    .cart-item-image {
+        width: 125px;
+        height: 125px;
+    }
+
+    #order-confirmation p {
+        font-size: 12px;
+    }
 }
