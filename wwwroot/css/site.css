@@ -101,10 +101,9 @@ select#account-id {
     -webkit-text-fill-color: transparent;
     font-size: 45px;
     text-align: center;
-    font-weight: bold;
     text-transform: uppercase;
     font-family: 'Steelfish Rg', 'helvetica neue', helvetica, arial, sans-serif;
-    font-weight: 800;
+    font-weight: 300;
     -webkit-font-smoothing: antialiased;
 }
 
