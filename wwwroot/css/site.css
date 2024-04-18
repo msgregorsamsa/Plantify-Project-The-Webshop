@@ -45,6 +45,8 @@ h1, h2 {
     }
 }
 
+/*--------------------------------------------------------------------------------*/
+
 /*INDEX/SEARCHPAGE*/
 
 /*Formulär för användarinloggning*/
@@ -62,7 +64,6 @@ form[method="post"][action="/FakeLogin"] {
     border-style: none;
 }
 
-/*Val av inloggat konto*/
 select#account-id {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-width: 100px;
@@ -74,7 +75,6 @@ select#account-id {
     border-style: none;
 }
 
-/*Login button*/
 .loginbtn {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-width: 100px;
@@ -107,7 +107,6 @@ select#account-id {
     -webkit-font-smoothing: antialiased;
 }
 
- /* L�nk f�r att visa varukorg p� s�ksidan */
 .view-cart-link 
 {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -121,14 +120,12 @@ select#account-id {
     font-size: 14px;
 }
  
- /* Formul�r f�r s�kning p� s�ksidan */
 .search-form {
     text-align: center;
     padding: 1em
     border-style: none;
 }
  
- /* Inmatningsf�lt f�r s�kning p� s�ksidan */
 .search-input {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-width: 300px;
@@ -137,7 +134,6 @@ select#account-id {
     border-style: none;
 }
  
- /* Dropdown-menyn f�r kategorier p� s�ksidan */
 .category-select {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-width: 200px;
@@ -145,7 +141,6 @@ select#account-id {
     padding: 6px;
 }
  
- /* Knapp f�r att utf�ra s�kning p� s�ksidan */
 .search-button {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     max-width: 110px;
@@ -156,7 +151,6 @@ select#account-id {
     border-style: none;
 }
  
- /* Lista med produkter p� s�ksidan */
 .product-list {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -165,7 +159,6 @@ select#account-id {
     grid-row-gap: 8px;
 }
  
- /* En enskild produkt i produktlistan p� s�ksidan */
 .product {
     background-color: white;
     border-radius: 20px;
@@ -179,7 +172,7 @@ select#account-id {
         box-shadow: 0 0 20px rgba(73, 73, 73, 0.59);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
  }
- /* Namn f�r en produkt p� s�ksidan */
+
 h2.product-name{
     font-family: "EB Garamond", serif;
     text-align: center;
@@ -190,7 +183,6 @@ p.product-price-index {
     text-align: center;
 }
  
-
 /*Knappar på index-sidan*/
 .show-more-details-button,
 .add-to-cart-button {
@@ -212,7 +204,6 @@ p.product-price-index {
     justify-content: center;
 }
 
-/* L�nk till produktens detaljsida p� s�ksidan */
 .product-link, .add-to-cart-form {
     display: grid;
 }
@@ -249,6 +240,7 @@ button.pagination-button {
 }
 /*------------------------------------------------------------------------------------------------*/
 
+
 /*DETAILS PAGE*/
 .product-details-page {
     background-color: white;
@@ -258,7 +250,6 @@ button.pagination-button {
     margin: 0 auto;
 }
 
-/* Container f�r produktdetaljer */
 .product-details {
     padding: 5px;
     margin: 10px;
@@ -276,7 +267,6 @@ button.pagination-button {
     padding: 10px;
 }
 
-/* Bild f�r produktdetaljer */
 .product-image {
     display: flex;
     width: 260px;
@@ -289,7 +279,7 @@ button.pagination-button {
     background-color: #ECECEC;
     padding: 15px;
 }
-/* Namn f�r produktdetaljer */
+
 .product-name {
     text-align: center;
     margin: 5px;
@@ -305,7 +295,6 @@ button.pagination-button {
 }
 
 
-/* Knapp f�r att �terg� till startsidan fr�n produktdetaljer */
 .return-to-start-button {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-width: 100px;
@@ -332,7 +321,6 @@ button.pagination-button {
     text-align: center;
 }
 
-/* En produkt i varukorgen */
 .cart-item {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -347,13 +335,11 @@ button.pagination-button {
     widht: 350px;
 }
 
-/* Bild f�r en produkt i varukorgen */
 .cart-item-image {
     width: 145px;
     height: 145px;
 }
 
-/* Totalpris f�r varukorgen */
 .cart-total {
     font-size: 15px;
     font-weight: 400;
@@ -366,7 +352,6 @@ button.pagination-button {
     justify-content: center;
 }
 
-/* Knapp f�r att placera en order fr�n varukorgen */
 .place-order-button {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-width: 100px;
@@ -382,7 +367,6 @@ button.pagination-button {
     border-style: none;
 }
 
-/* Knapp f�r att rensa varukorgen */
 .clear-cart-button {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-width: 100px;
@@ -398,7 +382,6 @@ button.pagination-button {
     border-style: none;
 }
 
-/* Knapp f�r att �terg� till startsidan fr�n varukorgen */
 .return-to-start-button {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-width: 100px;
@@ -461,9 +444,7 @@ p#empty-cart-message {
     border-style: none;
     margin: 0 auto;
 }
-
 /*----------------------------------------------*/
-
 
 /*Mediaquery startsida*/
 @media (max-width: 1530px) {
