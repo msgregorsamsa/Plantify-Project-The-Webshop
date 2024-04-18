@@ -26,7 +26,7 @@ namespace Plantify_Project_The_Webshop.Pages
         public string category { get; set; }
 
         private int PageSize = 10;
-        public int PageIndex { get; set; } = 0;
+        public int PageIndex { get; set; }
 
         // Metoder
         private void Setup()
@@ -34,9 +34,12 @@ namespace Plantify_Project_The_Webshop.Pages
             Products = database.Products.ToList();
         }
 
-        public void OnGet(string searchText, string category, int pageIndex = 0)
+        public void OnGet(string searchText, string category, int pageIndex)
         {
             Setup();
+
+            this.searchText = searchText;
+            this.category = category;
 
             if (searchText != null)
             {
@@ -54,13 +57,12 @@ namespace Plantify_Project_The_Webshop.Pages
 
         public ActionResult OnPostPrevious(int pageIndex, string searchText, string category)
         {
-            PageIndex = Math.Max(0, PageIndex - 1);
-            return RedirectToPage(new { searchText, category, pageIndex = PageIndex });
+            return RedirectToPage(new { searchText, category, PageIndex = pageIndex-1 });
         }
 
         public ActionResult OnPostNext(int pageIndex, string searchText, string category)
         {
-            return RedirectToPage(new { searchText, category, pageIndex = pageIndex+1 });
+            return RedirectToPage(new { searchText, category, PageIndex = pageIndex+1 });
         }
     }
 }
