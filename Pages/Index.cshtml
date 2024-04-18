@@ -62,9 +62,14 @@
 
 
     <div id="footer">
+
         <div class="indexBtn">
+
             <form method="post">
+
                 <input type="hidden" name="pageIndex" value="@Model.PageIndex" />
+
+                @* Om index är 0 ska previous alltid vara disabled*@
                 @if (Model.PageIndex == 0)
                 {
                     <button type="submit" asp-page-handler="Previous"
@@ -82,15 +87,8 @@
                     </button>
                 }
 
-                @if (Model.PageIndex == 2)
-                {
-                    <button type="submit" asp-page-handler="Next"
-                            asp-route-searchText="@Model.searchText" asp-route-category="@Model.category"
-                            class="pagination-button" disabled>
-                        Next
-                    </button>
-                }
-                else
+                @* Om antalet visade produkter är mindre än TotalAmountOfProducts så finns det fler sidor att visa, vilket gör next tillgänglig.*@
+                @if (((Model.PageIndex + 1) * Model.PageSize) < Model.TotalAmountOfProducts)
                 {
                     <button type="submit" asp-page-handler="Next"
                             asp-route-searchText="@Model.searchText" asp-route-category="@Model.category"
@@ -98,9 +96,19 @@
                         Next
                     </button>
                 }
-            </form>
-    </div>
-   
-    </div>
+                else
+                {
+                    <button type="submit" asp-page-handler="Next"
+                            asp-route-searchText="@Model.searchText" asp-route-category="@Model.category"
+                            class="pagination-button" disabled>
+                        Next
+                    </button>
+                }
 
+
+            </form>
+
+        </div>
+
+    </div>
 </div>

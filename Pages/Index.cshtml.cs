@@ -25,7 +25,9 @@ namespace Plantify_Project_The_Webshop.Pages
         public string searchText { get; set; }
         public string category { get; set; }
 
-        private int PageSize = 10;
+        public int PageSize = 10;
+
+        public int TotalAmountOfProducts { get; set; }
         public int PageIndex { get; set; }
 
         // Metoder
@@ -50,7 +52,7 @@ namespace Plantify_Project_The_Webshop.Pages
             {
                 Products = Products.Where(p => p.Category == category).ToList();
             }
-
+            TotalAmountOfProducts = Products.Count;
             PageIndex = pageIndex;
             Products = Products.Skip(PageIndex * PageSize).Take(PageSize).ToList();
         }
