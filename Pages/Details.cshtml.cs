@@ -2,22 +2,25 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Plantify_Project_The_Webshop.Data;
 using Plantify_Project_The_Webshop.Models;
-using System.Collections.Generic; 
 
 namespace Plantify_Project_The_Webshop.Pages
 {
     public class DetailsModel : PageModel
     {
+       //Databas
         private readonly AppDbContext database;
         private readonly AccessControl accessControl;
-        public Product Product { get; set; }
 
         public DetailsModel(AppDbContext database, AccessControl accessControl)
         {
-            this.database = database; //För att få åtkomst till databasen och accesskontrollen i detta scope
+            this.database = database;
             this.accessControl = accessControl;
         }
 
+        //Variabler
+        public Product Product { get; set; }
+
+        //Metoder
         private Product GetProductById(int id)
         {
             return Product = database.Products.First(p => p.ID == id);
@@ -28,7 +31,7 @@ namespace Plantify_Project_The_Webshop.Pages
             Product = GetProductById(id);
         }
 
-        public IActionResult OnPost(int id) //Lägg till en vara i varukurgen
+        public IActionResult OnPost(int id)
         {
             Product = GetProductById(id);
 
@@ -39,10 +42,7 @@ namespace Plantify_Project_The_Webshop.Pages
                                              ProductId = id, //Ändra till productname?? 
                                              Quantity = 1};
 
-                // Lägg till varan i databasen (varukorgen)
                 database.Carts.Add(newCartItem);
-
-                // Spara varan i databasen (varukorgen) 
                 database.SaveChanges();
 
                 return RedirectToPage("/Cart");
@@ -51,8 +51,6 @@ namespace Plantify_Project_The_Webshop.Pages
             {
                 return NotFound();
             }
-         
         }
-
     }
 }

@@ -5,12 +5,10 @@
     ViewData["Title"] = "Home";
 }
 
-
 <div id="search-page">
     
     <div id="header">
         <h1 class="welcome-message">Welcome, @accessControl.LoggedInAccountName!</h1>
-
 
         <form class="search-form" method="get" asp-page="./Index" asp-route-pageIndex="@Model.PageIndex">
             <input type="text" name="searchText" class="search-input" placeholder="Search for a product by name..." />
@@ -25,7 +23,6 @@
 
         </form>
     </div>
-
 
     <div id="main">
         <div class="product-list">
@@ -103,7 +100,6 @@
                 }
             </form>
     </div>
-
    
     </div>
 

@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage;
 using Plantify_Project_The_Webshop.Data;
 using Plantify_Project_The_Webshop.Models;
 
@@ -9,11 +8,9 @@ namespace Plantify_Project_The_Webshop.Pages
 {
     public class CartModel : PageModel
     {
-
         //Variabler
         public List<Cart> Carts { get; set; } 
         public Product Product { get; set; }
-
 
         public int CountItems { get; set; }
         public double TotalPrice { get; set; }
@@ -32,7 +29,6 @@ namespace Plantify_Project_The_Webshop.Pages
 		//Metoder
 		public List<Cart> GetCartItems()
 		{
-			// Hämta alla varukorgsobjekt för den inloggade användaren inklusive produktinformation
 			var cartItems = database.Carts
 				.Where(cart => cart.AccountID == accessControl.LoggedInAccountID)
 				.Include(cart => cart.Products) 
@@ -62,7 +58,6 @@ namespace Plantify_Project_The_Webshop.Pages
 
 		public ActionResult OnPostClearCart()
 		{
-			//Återanvänder koden som är för att hämta in alla varor i en varukorg
 			var cartItems = database.Carts
 				.Where(c => c.AccountID == accessControl.LoggedInAccountID)
 				.ToList();
@@ -71,7 +66,6 @@ namespace Plantify_Project_The_Webshop.Pages
 			{
 				database.Carts.RemoveRange(cartItems);
 				database.SaveChanges();
-
 			}
 
 			return RedirectToPage("/Index");
@@ -110,7 +104,5 @@ namespace Plantify_Project_The_Webshop.Pages
                 return RedirectToPage("/Cart");
             }
         }
-
-
     }
 }

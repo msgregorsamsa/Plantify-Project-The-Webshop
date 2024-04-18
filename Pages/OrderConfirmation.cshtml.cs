@@ -1,15 +1,12 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 using Plantify_Project_The_Webshop.Data;
 using Plantify_Project_The_Webshop.Models;
-using System;
-using System.Collections.Generic;
 
 namespace Plantify_Project_The_Webshop.Pages
 {
     public class OrderConfirmationModel : PageModel
     {
+        //Variabler
         public List<Cart> Carts { get; set; }
         public Product Product { get; set; }
         public double TotalPrice { get; set; }
@@ -25,6 +22,7 @@ namespace Plantify_Project_The_Webshop.Pages
             this.accessControl = accessControl;
         }
 
+        //Metoder
         static int GenerateOrdernummer(int min, int max)
         {
             Random random = new Random();
@@ -36,6 +34,5 @@ namespace Plantify_Project_The_Webshop.Pages
             TotalPrice = totalPrice;
             OrderNumber = GenerateOrdernummer(24050, 25670);
         }
-
     }
 }
